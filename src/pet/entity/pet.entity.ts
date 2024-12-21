@@ -1,11 +1,4 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  OneToMany,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Gender, PetType } from '../enums/pet-type.enum';
 import { Translation } from './translation.entity';
 
@@ -32,9 +25,9 @@ export class Pet {
   @Column({ type: 'text', nullable: true })
   voiceUrl?: string;
 
-  @CreateDateColumn()
+  @Column()
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @Column()
   updatedAt: Date;
 }

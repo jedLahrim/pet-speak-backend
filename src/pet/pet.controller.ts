@@ -26,7 +26,7 @@ export class PetController {
 
   @Post()
   @UseGuards(JwtAuthGuard)
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(FileInterceptor('profileImageFile'))
   create(
     @UploadedFile() profileImageFile: Express.Multer.File,
     @Body() createPetDto: CreatePetDto,
@@ -57,7 +57,7 @@ export class PetController {
 
   @Post(':id')
   @UseGuards(JwtAuthGuard)
-  @UseInterceptors(FileInterceptor('file'))
+  @UseInterceptors(FileInterceptor('voiceFile'))
   update(
     @UploadedFile() voiceFile: Express.Multer.File,
     @Param('id') id: string,

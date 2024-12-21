@@ -7,7 +7,7 @@ import { ConfigService } from '@nestjs/config';
 import { User } from '../entity/user.entity';
 
 export interface JwtPayload {
-  userId: string;
+  id: string;
 }
 
 @Injectable()
@@ -26,7 +26,7 @@ export class jwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   async validate(payload: JwtPayload): Promise<User> {
     const user = await this.userRepo
       .createQueryBuilder('user')
-      .where('user.id=:id', { id: payload.userId })
+      .where('user.id=:id', { id: payload.id })
       .getOne();
     if (!user) throw new UnauthorizedException('ERR_UNAUTHORIZED');
 

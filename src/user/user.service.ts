@@ -31,6 +31,7 @@ export class UserService {
     const user = this.userRepository.create({
       email,
       username,
+      createdAt: new Date(),
     });
 
     try {
@@ -66,5 +67,28 @@ export class UserService {
 
     user.access = accessToken;
     return user;
+  }
+
+  async update(createUserDto: CreateUserDto, user: User) {
+    const { email, username } = createUserDto;
+    const emailUser = await this.userRepository.findOne({
+      where: { email: email },
+    });
+    const usernameUser = await this.userRepository.findOne({
+      where: { username: username },
+    });
+    if (emailUser && usernameUser) {
+      throw new BadRequestException('This Email or username already exists');
+    }
+    const foundedUser = await this.userRepository.findOne({
+      where: { id: user.id },
+    });
+    if (!foundedUser) {
+      throw new NotFoundException('ERR_NOT_FOUND_USER');
+    }
+    await this.userRepository.update(user.id, createUserDto);
+    return await this.userRepository.findOne({
+      where: { id: user.id },
+    });
   }
 }

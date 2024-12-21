@@ -35,6 +35,7 @@ export class PetService {
     const pet = this.petRepository.create({
       ...createPetDto,
       profileImage: profileImageUrl,
+      createdAt: new Date(),
     });
     return await this.petRepository.save(pet);
   }
@@ -64,6 +65,7 @@ export class PetService {
     await this.petRepository.update(id, {
       ...updatePetDto,
       voiceUrl: voiceUrl,
+      updatedAt: new Date(),
     });
     return this.findOne(id);
   }
@@ -74,6 +76,7 @@ export class PetService {
   }
 
   async createTranslation(translationDto: TranslationDto) {
+    await this.findOne(translationDto.petId);
     const translations = this.translationRepository.create({
       ...translationDto,
       pet: { id: translationDto.petId },

@@ -1,10 +1,4 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { IsEmail, IsOptional, IsString } from 'class-validator';
 
 @Entity('users')
@@ -24,9 +18,9 @@ export class User {
 
   access?: string;
 
-  @CreateDateColumn()
+  @Column()
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @Column()
   updatedAt: Date;
 }

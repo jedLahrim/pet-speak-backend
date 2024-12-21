@@ -1,8 +1,10 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Patch, Post, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './create-user.dto';
 import { User } from './entity/user.entity';
 import { LoginUserDto } from './login-user.dto';
+import { JwtAuthGuard } from './guard/jwt-auth.guard';
+import { GetUser } from './get-user.decorator';
 
 @Controller('users')
 export class UserController {
@@ -16,5 +18,14 @@ export class UserController {
   @Post('login')
   async login(@Body() loginUserDto: LoginUserDto): Promise<User> {
     return await this.userService.login(loginUserDto);
+  }
+
+  @Patch(':id')
+  @UseGuards(JwtAuthGuard)
+  async update(
+    @Body() createUserDto: CreateUserDto,
+    @GetUser() user: User,
+  ): Promise<User> {
+    return await this.userService.update(createUserDto, user);
   }
 }
