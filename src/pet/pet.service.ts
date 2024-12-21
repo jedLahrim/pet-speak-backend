@@ -26,9 +26,11 @@ export class PetService {
     profileImageFile: Express.Multer.File,
     createPetDto: CreatePetDto,
   ): Promise<Pet> {
-    const profileImageUrl = await this.attachmentService.upload(
-      profileImageFile,
-    );
+    let profileImageUrl: string;
+    if (profileImageFile) {
+      profileImageUrl = await this.attachmentService.upload(profileImageFile);
+    }
+
     const pet = this.petRepository.create({
       ...createPetDto,
       profileImage: profileImageUrl,
