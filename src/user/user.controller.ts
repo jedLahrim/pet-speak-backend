@@ -20,7 +20,7 @@ export class UserController {
     return await this.userService.login(loginUserDto);
   }
 
-  @Patch()
+  @Post()
   @UseGuards(JwtAuthGuard)
   async update(
     @Body() createUserDto: CreateUserDto,
