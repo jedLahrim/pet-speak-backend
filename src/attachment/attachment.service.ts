@@ -21,10 +21,6 @@ export class AttachmentService {
   }
 
   async upload(file: Express.Multer.File): Promise<string> {
-    if (!file) {
-      throw new BadRequestException('No file provided');
-    }
-
     try {
       // Generate the key once and reuse it
       const fileKey = `lingoPet-${crypto.randomUUID()}-${file.originalname}`;

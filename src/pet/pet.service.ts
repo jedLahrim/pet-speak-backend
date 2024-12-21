@@ -26,9 +26,6 @@ export class PetService {
     profileImageFile: Express.Multer.File,
     createPetDto: CreatePetDto,
   ): Promise<Pet> {
-    if (!profileImageFile) {
-      throw new BadRequestException('No file provided');
-    }
     const profileImageUrl = await this.attachmentService.upload(
       profileImageFile,
     );
@@ -58,7 +55,7 @@ export class PetService {
     voiceFile: Express.Multer.File,
   ): Promise<Pet> {
     if (!voiceFile) {
-      throw new BadRequestException('No file provided');
+      throw new BadRequestException('No voice file is provided');
     }
     const voiceUrl = await this.attachmentService.upload(voiceFile);
     await this.findOne(id);
