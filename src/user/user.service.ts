@@ -81,14 +81,17 @@ export class UserService {
       throw new BadRequestException('This Email or username already exists');
     }
     const foundedUser = await this.userRepository.findOne({
-      where: { id: user.id },
+      where: { id: user?.id },
     });
     if (!foundedUser) {
       throw new NotFoundException('ERR_NOT_FOUND_USER');
     }
-    await this.userRepository.update(user.id, createUserDto);
+    await this.userRepository.update(user?.id, {
+      ...createUserDto,
+      updatedAt: new Date(),
+    });
     return await this.userRepository.findOne({
-      where: { id: user.id },
+      where: { id: user?.id },
     });
   }
 }
