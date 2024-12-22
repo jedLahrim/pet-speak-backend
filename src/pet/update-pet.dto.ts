@@ -1,5 +1,6 @@
 import { IsEnum, IsOptional, IsString } from 'class-validator';
 import { Gender, PetType } from './enums/pet-type.enum';
+import { TranslationDto } from './translation.dto';
 
 export class UpdatePetDto {
   @IsString()
@@ -21,7 +22,11 @@ export class UpdatePetDto {
   @IsOptional()
   @IsString()
   translationText?: string;
+
   @IsOptional()
   @IsString()
   voiceUrl?: string;
+
+  @IsOptional()
+  translationDto?: TranslationDto;
 }

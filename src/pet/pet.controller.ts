@@ -2,7 +2,6 @@ import { Body, Controller, Delete, Get, Param, Post, UploadedFile, UseGuards, Us
 import { PetService } from './pet.service';
 import { CreatePetDto } from './create-pet.dto';
 import { Pet } from './entity/pet.entity';
-import { UpdatePetDto } from './update-pet.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { TranslationDto } from './translation.dto';
 import { Translation } from './entity/translation.entity';
@@ -50,13 +49,13 @@ export class PetController {
   @Post(':id')
   @UseGuards(JwtAuthGuard)
   @UseInterceptors(FileInterceptor('voiceFile'))
-  update(
+  updateTranslation(
     @UploadedFile() voiceFile: Express.Multer.File,
     @Param('id') id: string,
-    @Body() updatePetDto: UpdatePetDto,
+    @Body() translationDto: TranslationDto,
     @GetUser() user: User,
   ): Promise<Pet> {
-    return this.petService.update(id, updatePetDto, voiceFile);
+    return this.petService.updateTranslation(id, translationDto, voiceFile);
   }
 
   @Delete(':id')

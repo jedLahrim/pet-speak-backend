@@ -12,6 +12,9 @@ export class Translation {
   @Column({ type: 'varchar', nullable: true })
   label?: string;
 
+  @Column({ type: 'text', nullable: true })
+  voiceUrl?: string;
+
   @ManyToOne(() => Pet, (pet) => pet.translations, { onDelete: 'CASCADE' })
   pet: Pet;
 

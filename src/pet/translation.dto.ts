@@ -9,6 +9,11 @@ export class TranslationDto {
   @IsString()
   label?: string;
 
+  @IsOptional()
   @IsString()
-  petId: string;
+  voiceUrl?: string;
+
+  @IsOptional()
+  @IsString()
+  petId?: string;
 }

@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Pet } from './entity/pet.entity';
 import { CreatePetDto } from './create-pet.dto';
-import { UpdatePetDto } from './update-pet.dto';
 import { AttachmentService } from '../attachment/attachment.service';
 import { TranslationDto } from './translation.dto';
 import { Translation } from './entity/translation.entity';
@@ -43,27 +42,25 @@ export class PetService {
   }
 
   async findOne(id: string): Promise<Pet> {
-    const pet = await this.petRepository.findOne({ where: { id }, relations: { user: true } });
+    const pet = await this.petRepository.findOne({ where: { id }, relations: { user: true, translations: true } });
     if (!pet) {
       throw new NotFoundException(`Pet with ID ${id} not found`);
     }
     return pet;
   }
 
-  async update(
+  async updateTranslation(
     id: string,
-    updatePetDto: UpdatePetDto,
+    translationDto: TranslationDto,
     voiceFile: Express.Multer.File,
   ): Promise<Pet> {
+    const { text, label } = translationDto;
     if (!voiceFile) {
       throw new BadRequestException('No voice file is provided');
     }
     const voiceUrl = await this.attachmentService.upload(voiceFile);
-    await this.findOne(id);
-    await this.petRepository.update(id, {
-      ...updatePetDto,
-      voiceUrl: voiceUrl,
-    });
+    const pet = await this.findOne(id);
+    await this.createTranslation({ petId: pet?.id, voiceUrl: voiceUrl, text: text, label: label });
     return this.findOne(id);
   }
 

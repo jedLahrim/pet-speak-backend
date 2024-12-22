@@ -10,6 +10,7 @@ import {
 import { Gender, PetType } from '../enums/pet-type.enum';
 import { Translation } from './translation.entity';
 import { User } from '../../user/entity/user.entity';
+import { Exclude } from 'class-transformer';
 
 @Entity('pets')
 export class Pet {
@@ -31,8 +32,6 @@ export class Pet {
   @OneToMany(() => Translation, (translation) => translation.pet)
   translations: Translation[];
 
-  @Column({ type: 'text', nullable: true })
-  voiceUrl?: string;
 
   @CreateDateColumn()
   createdAt: Date;
@@ -41,6 +40,7 @@ export class Pet {
   updatedAt: Date;
 
   @ManyToOne(() => User, (user) => user.pets, { onDelete: 'CASCADE' })
+  @Exclude()
   user: User;
 
   @Column()
