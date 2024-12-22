@@ -31,7 +31,6 @@ export class UserService {
     const user = this.userRepository.create({
       email,
       username,
-      createdAt: new Date(),
     });
 
     try {
@@ -88,7 +87,6 @@ export class UserService {
     }
     await this.userRepository.update(user?.id, {
       ...createUserDto,
-      updatedAt: new Date(),
     });
     return await this.userRepository.findOne({
       where: { id: user?.id },

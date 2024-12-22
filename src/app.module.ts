@@ -4,6 +4,7 @@ import { UserModule } from './user/user.module';
 import { PetModule } from './pet/pet.module';
 import { AttachmentModule } from './attachment/attachment.module';
 import { ConfigModule } from '@nestjs/config';
+import * as process from 'node:process';
 
 @Module({
   imports: [
@@ -29,4 +30,5 @@ import { ConfigModule } from '@nestjs/config';
     AttachmentModule,
   ],
 })
-export class AppModule {}
+export class AppModule {
+}

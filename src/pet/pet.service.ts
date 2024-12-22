@@ -34,7 +34,6 @@ export class PetService {
     const pet = this.petRepository.create({
       ...createPetDto,
       profileImage: profileImageUrl,
-      createdAt: new Date(),
     });
     return await this.petRepository.save(pet);
   }
@@ -64,7 +63,6 @@ export class PetService {
     await this.petRepository.update(id, {
       ...updatePetDto,
       voiceUrl: voiceUrl,
-      updatedAt: new Date(),
     });
     return this.findOne(id);
   }
