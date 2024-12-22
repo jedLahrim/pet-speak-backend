@@ -1,8 +1,4 @@
-import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Pet } from './entity/pet.entity';
@@ -11,6 +7,7 @@ import { UpdatePetDto } from './update-pet.dto';
 import { AttachmentService } from '../attachment/attachment.service';
 import { TranslationDto } from './translation.dto';
 import { Translation } from './entity/translation.entity';
+import { User } from '../user/entity/user.entity';
 
 @Injectable()
 export class PetService {
@@ -20,11 +17,13 @@ export class PetService {
     @InjectRepository(Translation)
     private readonly translationRepository: Repository<Translation>,
     private readonly attachmentService: AttachmentService,
-  ) {}
+  ) {
+  }
 
   async create(
     profileImageFile: Express.Multer.File,
     createPetDto: CreatePetDto,
+    user: User,
   ): Promise<Pet> {
     let profileImageUrl: string;
     if (profileImageFile) {
@@ -34,6 +33,7 @@ export class PetService {
     const pet = this.petRepository.create({
       ...createPetDto,
       profileImage: profileImageUrl,
+      user: { id: user.id },
     });
     return await this.petRepository.save(pet);
   }
@@ -43,7 +43,7 @@ export class PetService {
   }
 
   async findOne(id: string): Promise<Pet> {
-    const pet = await this.petRepository.findOne({ where: { id } });
+    const pet = await this.petRepository.findOne({ where: { id }, relations: { user: true } });
     if (!pet) {
       throw new NotFoundException(`Pet with ID ${id} not found`);
     }

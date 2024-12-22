@@ -14,4 +14,7 @@ export class Translation {
 
   @ManyToOne(() => Pet, (pet) => pet.translations, { onDelete: 'CASCADE' })
   pet: Pet;
+
+  @Column()
+  petId: string;
 }

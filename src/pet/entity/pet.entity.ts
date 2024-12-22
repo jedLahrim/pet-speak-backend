@@ -1,6 +1,15 @@
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Gender, PetType } from '../enums/pet-type.enum';
 import { Translation } from './translation.entity';
+import { User } from '../../user/entity/user.entity';
 
 @Entity('pets')
 export class Pet {
@@ -30,4 +39,10 @@ export class Pet {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @ManyToOne(() => User, (user) => user.pets, { onDelete: 'CASCADE' })
+  user: User;
+
+  @Column()
+  userId: string;
 }

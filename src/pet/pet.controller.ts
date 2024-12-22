@@ -1,14 +1,4 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  UploadedFile,
-  UseGuards,
-  UseInterceptors,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { PetService } from './pet.service';
 import { CreatePetDto } from './create-pet.dto';
 import { Pet } from './entity/pet.entity';
@@ -22,7 +12,8 @@ import { User } from '../user/entity/user.entity';
 
 @Controller('pets')
 export class PetController {
-  constructor(private readonly petService: PetService) {}
+  constructor(private readonly petService: PetService) {
+  }
 
   @Post()
   @UseGuards(JwtAuthGuard)
@@ -30,8 +21,9 @@ export class PetController {
   create(
     @UploadedFile() profileImageFile: Express.Multer.File,
     @Body() createPetDto: CreatePetDto,
+    @GetUser() user: User,
   ): Promise<Pet> {
-    return this.petService.create(profileImageFile, createPetDto);
+    return this.petService.create(profileImageFile, createPetDto, user);
   }
 
   @Post('translation')

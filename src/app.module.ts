@@ -23,7 +23,7 @@ import * as process from 'node:process';
       autoLoadEntities: true,
       retryDelay: 5000,
       synchronize: true, // Disable in production!
-      logging: true,
+      // logging: true,
     }),
     UserModule,
     PetModule,

@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { IsEmail, IsOptional, IsString } from 'class-validator';
+import { Pet } from '../../pet/entity/pet.entity';
 
 @Entity('users')
 export class User {
@@ -23,4 +24,8 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToMany(() => Pet, (pet) => pet.user)
+  pets: Pet[];
+
 }
