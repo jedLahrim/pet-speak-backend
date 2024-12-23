@@ -1,5 +1,11 @@
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-import { IsEmail, IsOptional, IsString } from 'class-validator';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Pet } from '../../pet/entity/pet.entity';
 
 @Entity('users')
@@ -8,14 +14,7 @@ export class User {
   id: string;
 
   @Column({ unique: true, nullable: true })
-  @IsOptional()
-  @IsEmail()
-  email?: string;
-
-  @Column({ unique: true, nullable: true })
-  @IsOptional()
-  @IsString()
-  username?: string;
+  emailOrUsername?: string;
 
   access?: string;
 
@@ -27,5 +26,4 @@ export class User {
 
   @OneToMany(() => Pet, (pet) => pet.user)
   pets: Pet[];
-
 }

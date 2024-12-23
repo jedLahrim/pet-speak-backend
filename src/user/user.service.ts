@@ -1,4 +1,9 @@
-import { BadRequestException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './entity/user.entity';
@@ -12,21 +17,19 @@ export class UserService {
   constructor(
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
-  ) {
-  }
+  ) {}
 
   async createUser(createUserDto: CreateUserDto): Promise<User> {
-    const { email, username } = createUserDto;
+    const { emailOrUsername } = createUserDto;
 
-    if (!email && !username) {
+    if (!emailOrUsername) {
       throw new BadRequestException(
         'Either email or username must be provided',
       );
     }
 
     const user = this.userRepository.create({
-      email,
-      username,
+      emailOrUsername: emailOrUsername,
     });
 
     try {
@@ -40,10 +43,10 @@ export class UserService {
   }
 
   async login(loginUserDto: LoginUserDto): Promise<User> {
-    const { email, username } = loginUserDto;
+    const { emailOrUsername } = loginUserDto;
 
     // Validate that either email or username is provided
-    if (!email && !username) {
+    if (!emailOrUsername) {
       throw new UnauthorizedException(
         'Either email or username must be provided',
       );
@@ -51,7 +54,7 @@ export class UserService {
 
     // Find the user by email or username
     const user = await this.userRepository.findOne({
-      where: email ? { email } : { username },
+      where: { emailOrUsername },
     });
     if (!user) {
       throw new NotFoundException('user not found');
@@ -65,14 +68,12 @@ export class UserService {
   }
 
   async update(createUserDto: CreateUserDto, user: User) {
-    const { email, username } = createUserDto;
-    const emailUser = await this.userRepository.findOne({
-      where: { email: email },
+    const { emailOrUsername } = createUserDto;
+    const foundedEmailOrUsername = await this.userRepository.findOne({
+      where: { emailOrUsername: emailOrUsername },
     });
-    const usernameUser = await this.userRepository.findOne({
-      where: { username: username },
-    });
-    if (emailUser && usernameUser) {
+
+    if (foundedEmailOrUsername) {
       throw new BadRequestException('This Email or username already exists');
     }
     const foundedUser = await this.userRepository.findOne({

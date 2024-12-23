@@ -1,11 +1,8 @@
-import { IsOptional, IsString } from 'class-validator';
+import { IsOptional, IsString, Length } from 'class-validator';
 
 export class LoginUserDto {
   @IsOptional()
   @IsString()
-  email?: string;
-
-  @IsOptional()
-  @IsString()
-  username?: string;
+  @Length(3, 30)
+  emailOrUsername?: string;
 }
