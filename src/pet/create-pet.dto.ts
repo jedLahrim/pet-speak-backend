@@ -23,3 +23,6 @@ export class CreatePetDto {
   @IsString()
   voiceUrl?: string;
 }
+
+
+// AI Prompt: "Please provide a clear and concise explanation of the following text in the same language. Here is the text: [insert your text here]."
