@@ -12,7 +12,6 @@ import { TranslationDto } from './translation.dto';
 import { Translation } from './entity/translation.entity';
 import { User } from '../user/entity/user.entity';
 import { GenerateSuggestionDto } from './generate-suggestion.dto';
-import * as gTTS from 'gtts';
 import * as crypto from 'node:crypto';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
@@ -104,8 +103,12 @@ export class PetService {
   }
 
   async textToSpeech(speech: string, languageCode: string): Promise<string> {
-    const gtts = new gTTS(speech, languageCode);
-    const tempFilePath = path.join(__dirname, `${crypto.randomUUID()}.mp3`);
+    // Make sure gTTS is properly imported
+    const GTTSConstructor = require('gtts');
+    const gtts = new GTTSConstructor(speech, languageCode);
+
+    // Use /tmp directory for Vercel serverless functions
+    const tempFilePath = path.join('/tmp', `${crypto.randomUUID()}.mp3`);
 
     return new Promise<string>((resolve, reject) => {
       gtts.save(tempFilePath, async (err: Error) => {
@@ -113,23 +116,25 @@ export class PetService {
           return reject(err);
         }
 
-        // Read the file into a buffer
         try {
           const fileBuffer = fs.readFileSync(tempFilePath);
 
-          // Upload the buffer to your attachment service
           const audioLink = await this.attachmentService.upload({
             originalname: path.basename(tempFilePath),
             buffer: fileBuffer,
             mimetype: 'audio/mpeg',
           });
 
-          // Optionally delete the temporary file after upload
+          // Clean up the temporary file
           fs.unlinkSync(tempFilePath);
 
-          resolve(audioLink); // Return the link to the uploaded audio file
+          resolve(audioLink);
         } catch (uploadError) {
-          reject(new Error(uploadError));
+          // Clean up the temporary file even if upload fails
+          if (fs.existsSync(tempFilePath)) {
+            fs.unlinkSync(tempFilePath);
+          }
+          reject(new Error(`Upload failed: ${uploadError?.message}`));
         }
       });
     });
