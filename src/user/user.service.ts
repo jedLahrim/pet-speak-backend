@@ -11,7 +11,7 @@ import { CreateUserDto } from './create-user.dto';
 import { LoginUserDto } from './login-user.dto';
 import * as jwt from 'jsonwebtoken';
 import * as process from 'node:process';
-import * as sha256 from 'sha256';
+import { x2 } from 'sha256';
 
 @Injectable()
 export class UserService {
@@ -29,7 +29,7 @@ export class UserService {
       );
     }
     const value = `${process.env.ENCRYPTION_PHRASE}${emailOrUsername}`;
-    const crypted = sha256(value);
+    const crypted = x2(value);
     const user = this.userRepository.create({
       emailOrUsername: emailOrUsername,
       hashedEmailOrUsername: crypted,
@@ -55,7 +55,7 @@ export class UserService {
       );
     }
     const value = `${process.env.ENCRYPTION_PHRASE}${emailOrUsername}`;
-    const crypted = sha256(value);
+    const crypted = x2(value);
     // Find the user by email or username
     const user = await this.userRepository.findOne({
       where: { hashedEmailOrUsername: crypted },
@@ -75,7 +75,7 @@ export class UserService {
     const { emailOrUsername } = createUserDto;
 
     const value = `${process.env.ENCRYPTION_PHRASE}${emailOrUsername}`;
-    const crypted = sha256(value);
+    const crypted = x2(value);
 
     const foundedEmailOrUsername = await this.userRepository.findOne({
       where: { hashedEmailOrUsername: crypted },
