@@ -1,18 +1,28 @@
-import { Body, Controller, Delete, Get, Param, Post, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  UploadedFile,
+  UseGuards,
+  UseInterceptors,
+} from '@nestjs/common';
 import { PetService } from './pet.service';
 import { CreatePetDto } from './create-pet.dto';
 import { Pet } from './entity/pet.entity';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { TranslationDto } from './translation.dto';
-import { Translation } from './entity/translation.entity';
 import { JwtAuthGuard } from '../user/guard/jwt-auth.guard';
 import { GetUser } from '../user/get-user.decorator';
 import { User } from '../user/entity/user.entity';
+import { GenerateSuggestionDto } from './generate-suggestion.dto';
+import { UpdatePetDto } from './update-pet.dto';
 
 @Controller('pets')
 export class PetController {
-  constructor(private readonly petService: PetService) {
-  }
+  constructor(private readonly petService: PetService) {}
 
   @Post()
   @UseGuards(JwtAuthGuard)
@@ -25,14 +35,25 @@ export class PetController {
     return this.petService.create(profileImageFile, createPetDto, user);
   }
 
-  @Post('translation')
+  @Post(':id')
   @UseGuards(JwtAuthGuard)
-  // @UseInterceptors(FileInterceptor('file'))
-  createTranslation(
-    @Body() translationDto: TranslationDto,
-  ): Promise<Translation> {
-    return this.petService.createTranslation(translationDto);
+  @UseInterceptors(FileInterceptor('profileImageFile'))
+  update(
+    @UploadedFile() profileImageFile: Express.Multer.File,
+    @Body() updatePetDto: UpdatePetDto,
+    @Param('id') id: string,
+  ): Promise<Pet> {
+    return this.petService.update(profileImageFile, updatePetDto, id);
   }
+
+  // @Post('translation')
+  // @UseGuards(JwtAuthGuard)
+  // // @UseInterceptors(FileInterceptor('file'))
+  // createTranslation(
+  //   @Body() translationDto: TranslationDto,
+  // ): Promise<Translation> {
+  //   return this.petService.createTranslation(translationDto);
+  // }
 
   @Get()
   @UseGuards(JwtAuthGuard)
@@ -46,7 +67,7 @@ export class PetController {
     return this.petService.findOne(id);
   }
 
-  @Post(':id')
+  @Post(':id/translation')
   @UseGuards(JwtAuthGuard)
   @UseInterceptors(FileInterceptor('voiceFile'))
   updateTranslation(
@@ -62,5 +83,13 @@ export class PetController {
   @UseGuards(JwtAuthGuard)
   remove(@Param('id') id: string): Promise<void> {
     return this.petService.remove(id);
+  }
+
+  @Post('generate/suggestion')
+  @UseGuards(JwtAuthGuard)
+  generateSuggestion(
+    @Body() generateSuggestionDto: GenerateSuggestionDto,
+  ): Promise<{ speech: string }> {
+    return this.petService.generateSuggestion(generateSuggestionDto);
   }
 }

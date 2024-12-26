@@ -32,7 +32,6 @@ export class Pet {
   @OneToMany(() => Translation, (translation) => translation.pet)
   translations: Translation[];
 
-
   @CreateDateColumn()
   createdAt: Date;
 

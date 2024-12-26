@@ -30,5 +30,4 @@ import * as process from 'node:process';
     AttachmentModule,
   ],
 })
-export class AppModule {
-}
+export class AppModule {}

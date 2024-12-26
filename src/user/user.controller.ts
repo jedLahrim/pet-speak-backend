@@ -8,8 +8,7 @@ import { GetUser } from './get-user.decorator';
 
 @Controller('users')
 export class UserController {
-  constructor(private readonly userService: UserService) {
-  }
+  constructor(private readonly userService: UserService) {}
 
   @Post('signup')
   async signUp(@Body() createUserDto: CreateUserDto): Promise<User> {
@@ -32,9 +31,7 @@ export class UserController {
 
   @Get()
   @UseGuards(JwtAuthGuard)
-  async findOne(
-    @GetUser() user: User,
-  ): Promise<User> {
+  async findOne(@GetUser() user: User): Promise<User> {
     return await this.userService.findOne(user);
   }
 }

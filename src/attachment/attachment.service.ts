@@ -1,8 +1,4 @@
-import {
-  BadRequestException,
-  Injectable,
-  InternalServerErrorException,
-} from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import * as process from 'node:process';
 import * as crypto from 'node:crypto';
@@ -20,7 +16,7 @@ export class AttachmentService {
     });
   }
 
-  async upload(file: Express.Multer.File): Promise<string> {
+  async upload(file: Partial<Express.Multer.File>): Promise<string> {
     try {
       // Generate the key once and reuse it
       const fileKey = `lingoPet-${crypto.randomUUID()}-${file.originalname}`;

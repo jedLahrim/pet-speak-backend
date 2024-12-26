@@ -11,6 +11,7 @@ import { CreateUserDto } from './create-user.dto';
 import { LoginUserDto } from './login-user.dto';
 import * as jwt from 'jsonwebtoken';
 import * as process from 'node:process';
+import * as sha256 from 'sha256';
 
 @Injectable()
 export class UserService {
@@ -27,9 +28,11 @@ export class UserService {
         'Either email or username must be provided',
       );
     }
-
+    const value = `${process.env.ENCRYPTION_PHRASE}${emailOrUsername}`;
+    const crypted = sha256(value);
     const user = this.userRepository.create({
       emailOrUsername: emailOrUsername,
+      hashedEmailOrUsername: crypted,
     });
 
     try {
@@ -51,10 +54,11 @@ export class UserService {
         'Either email or username must be provided',
       );
     }
-
+    const value = `${process.env.ENCRYPTION_PHRASE}${emailOrUsername}`;
+    const crypted = sha256(value);
     // Find the user by email or username
     const user = await this.userRepository.findOne({
-      where: { emailOrUsername },
+      where: { hashedEmailOrUsername: crypted },
     });
     if (!user) {
       throw new NotFoundException('user not found');
@@ -69,8 +73,12 @@ export class UserService {
 
   async update(createUserDto: CreateUserDto, user: User) {
     const { emailOrUsername } = createUserDto;
+
+    const value = `${process.env.ENCRYPTION_PHRASE}${emailOrUsername}`;
+    const crypted = sha256(value);
+
     const foundedEmailOrUsername = await this.userRepository.findOne({
-      where: { emailOrUsername: emailOrUsername },
+      where: { hashedEmailOrUsername: crypted },
     });
 
     if (foundedEmailOrUsername) {
@@ -82,12 +90,19 @@ export class UserService {
     if (!foundedUser) {
       throw new NotFoundException('ERR_NOT_FOUND_USER');
     }
-    await this.userRepository.update(user?.id, {
-      ...createUserDto,
-    });
-    return await this.userRepository.findOne({
-      where: { id: user?.id },
-    });
+    try {
+      await this.userRepository.update(user?.id, {
+        ...createUserDto,
+      });
+      return await this.userRepository.findOne({
+        where: { id: user?.id },
+      });
+    } catch (error) {
+      if (error.code === 'ER_DUP_ENTRY') {
+        throw new BadRequestException('This Email or username already exists');
+      }
+      throw error;
+    }
   }
 
   async findOne(user: User) {
