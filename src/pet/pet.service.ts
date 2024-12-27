@@ -141,7 +141,7 @@ export class PetService {
   }
 
   async getRefinedText(originalText: string, languageCode: string): Promise<string> {
-    const prompt = `Please rewrite the following text with a clear and concise explanation in the same language code ${languageCode}. Ensure the generated text is between 200 and 300 characters. Do not exceed or fall short of this range. 
+    const prompt = `Please Generates a 300 characters text rewriting the following text with a clear and concise explanation in the same language code ${languageCode}. Ensure the generated text is not less than 300 characters. Do not exceed or fall short of this range. 
               Here is the text: ${originalText}`;
 
     // Replace with your ChatGPT API call logic
