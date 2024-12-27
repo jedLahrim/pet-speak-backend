@@ -97,7 +97,7 @@ export class PetService {
 
   async generateSuggestion(generateSuggestionDto: GenerateSuggestionDto) {
     const { text, languageCode } = generateSuggestionDto;
-    const generatedText = await this.getRefinedText(text);
+    const generatedText = await this.getRefinedText(text, languageCode);
     const speech = await this.textToSpeech(generatedText, languageCode);
     return { text: generatedText, speech };
   }
@@ -140,8 +140,8 @@ export class PetService {
     });
   }
 
-  async getRefinedText(originalText: string): Promise<string> {
-    const prompt = `Please rewrite the following text with a clear and concise explanation in the same language. Ensure the generated text is between 200 and 300 characters. Do not exceed or fall short of this range. 
+  async getRefinedText(originalText: string, languageCode: string): Promise<string> {
+    const prompt = `Please rewrite the following text with a clear and concise explanation in the same language code ${languageCode}. Ensure the generated text is between 200 and 300 characters. Do not exceed or fall short of this range. 
               Here is the text: ${originalText}`;
 
     // Replace with your ChatGPT API call logic
