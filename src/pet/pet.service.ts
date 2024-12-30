@@ -180,7 +180,7 @@ export class PetService {
     if (profileImageUrl) {
       profileImageUrl = await this.attachmentService.upload(profileImageFile);
     }
-    updatePetDto.profileImag ??= profileImageUrl;
+    updatePetDto.profileImage ??= profileImageUrl;
     await this.petRepository.update(id, updatePetDto);
     return this.findOne(id);
   }
