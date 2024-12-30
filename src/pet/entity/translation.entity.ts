@@ -1,4 +1,7 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn,  
+  CreateDateColumn,
+  UpdateDateColumn
+       } from 'typeorm';
 import { Pet } from './pet.entity';
 
 @Entity()
