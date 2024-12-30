@@ -23,7 +23,7 @@ import { GetUser } from '../user/get-user.decorator';
 import { User } from '../user/entity/user.entity';
 import { GenerateSuggestionDto } from './generate-suggestion.dto';
 import { UpdatePetDto } from './update-pet.dto';
-import { FilterPetDto } from './dto/filter-pet.dto';
+import { FilterPetDto } from './filter-pet.dto';
 
 @Controller('pets')
 export class PetController {
