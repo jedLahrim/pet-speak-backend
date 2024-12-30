@@ -79,6 +79,30 @@ export class PetController {
     return this.petService.updateTranslation(id, translationDto, voiceFile);
   }
 
+
+  @Get(':id/translation')
+  async getTranslation(@Param('id') id: string): Promise<Translation> {
+    try {
+      return await this.petService.getTranslation(id);
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
+  }
+
+  @Delete(':id/translation')
+  async deleteTranslation(@Param('id') id: string): Promise<void> {
+    try {
+      await this.petService.deleteTranslation(id);
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
+  }
+
+  @Get(':petId/translation')
+  async getAllTranslations(@Param('petId') petId: string): Promise<Translation[]> {
+    return await this.petService.getAllTranslations(petId);
+  }
+  
   @Delete(':id')
   @UseGuards(JwtAuthGuard)
   remove(@Param('id') id: string): Promise<void> {
