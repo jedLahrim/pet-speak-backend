@@ -101,10 +101,11 @@ export class PetController {
     }
   }
 
-  @Get(':petId/translation')
-  async getAllTranslations(@Param('petId') petId: string): Promise<Translation[]> {
-    return await this.petService.getAllTranslations(petId);
-  }
+@Get('translation')
+async getAllTranslations(@Query() filterPetDto: FilterPetDto): Promise<Translation[]> {
+  const { petId } = filterPetDto;
+  return await this.petService.getAllTranslations(petId);
+}
   
   @Delete(':id')
   @UseGuards(JwtAuthGuard)
