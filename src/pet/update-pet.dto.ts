@@ -17,7 +17,7 @@ export class UpdatePetDto {
 
   @IsOptional()
   @IsString()
-  profileImag?: string;
+  profileImage?: string;
 
   @IsOptional()
   @IsString()
