@@ -184,4 +184,27 @@ export class PetService {
     await this.petRepository.update(id, updatePetDto);
     return this.findOne(id);
   }
+
+  async getTranslation(id: string): Promise<Translation> {
+  const translation = await this.translationRepository.findOne({ where: { id } });
+  if (!translation) {
+    throw new NotFoundException(`Translation with ID ${id} not found`);
+  }
+  return translation;
+}
+
+async deleteTranslation(id: string): Promise<void> {
+  const translation = await this.getTranslation(id);
+  await this.translationRepository.remove(translation);
+}
+
+async getAllTranslations(petId: string): Promise<Translation[]> {
+  const translations = await this.translationRepository
+    .createQueryBuilder('translation')
+    .where('translation.petId = :petId', { petId })
+    .getMany();
+
+  return translations;
+}
+
 }
