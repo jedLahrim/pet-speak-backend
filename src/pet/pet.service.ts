@@ -177,7 +177,7 @@ export class PetService {
     id: string,
   ) {
     let profileImageUrl: string;
-    if (profileImageUrl) {
+    if (profileImageFile) {
       profileImageUrl = await this.attachmentService.upload(profileImageFile);
     }
     updatePetDto.profileImage ??= profileImageUrl;
