@@ -8,6 +8,9 @@ import {
   UploadedFile,
   UseGuards,
   UseInterceptors,
+  BadRequestException,
+  Injectable,
+  NotFoundException,
 } from '@nestjs/common';
 import { PetService } from './pet.service';
 import { CreatePetDto } from './create-pet.dto';
