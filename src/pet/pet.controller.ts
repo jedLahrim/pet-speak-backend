@@ -60,11 +60,11 @@ export class PetController {
   //   return this.petService.createTranslation(translationDto);
   // }
 
-  @Get()
-  @UseGuards(JwtAuthGuard)
-  findAll(): Promise<Pet[]> {
-    return this.petService.findAll();
-  }
+  // @Get()
+  // @UseGuards(JwtAuthGuard)
+  // findAll(): Promise<Pet[]> {
+  //   return this.petService.findAll();
+  // }
 
   @Get(':id')
   @UseGuards(JwtAuthGuard)
@@ -103,7 +103,7 @@ export class PetController {
     }
   }
 
-@Get('translation')
+@Get()
 async getAllTranslations(@Query() filterPetDto: FilterPetDto): Promise<Translation[]> {
   const { petId } = filterPetDto;
   return await this.petService.getAllTranslations(petId);
