@@ -202,6 +202,7 @@ async getAllTranslations(petId: string): Promise<Translation[]> {
   const translations = await this.translationRepository
     .createQueryBuilder('translation')
     .where('translation.petId = :petId', { petId })
+     .orderBy('translation.createdAt', 'DESC')
     .getMany();
 
   return translations;
