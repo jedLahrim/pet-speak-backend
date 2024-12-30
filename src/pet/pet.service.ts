@@ -17,6 +17,7 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { Constant } from '../common/constant/constant';
 import { UpdatePetDto } from './update-pet.dto';
+import axios from 'axios';
 
 @Injectable()
 export class PetService {
@@ -140,25 +141,34 @@ export class PetService {
     });
   }
 
-  async getRefinedText(originalText: string, languageCode: string): Promise<string> {
-    const prompt = `Please Generates a 300 characters text rewriting the following text with a clear and concise explanation in the same language code ${languageCode}. Ensure the generated text is not less than 300 characters. Do not exceed or fall short of this range. 
+  async getRefinedText(
+    originalText: string,
+    languageCode: string,
+  ): Promise<string> {
+    try {
+      const prompt = `Please Generates a 300 characters text rewriting the following text with a clear and concise explanation in the same language code ${languageCode}. Ensure the generated text is not less than 300 characters. Do not exceed or fall short of this range. 
               Here is the text: ${originalText}`;
-
-    // Replace with your ChatGPT API call logic
-    const response = await fetch(Constant.OPEN_AI_URL, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${process.env.OPENAI_CHAT_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
-        messages: [{ role: 'user', content: prompt }],
-      }),
-    });
-
-    const data = await response.json();
-    return data.choices[0].message.content;
+      const options = {
+        method: 'POST',
+        url: Constant.OPEN_AI_URL,
+        headers: Constant.OPEN_AI_HEADERS,
+        data: {
+          model: 'gpt-4o-mini',
+          messages: [
+            {
+              role: 'user',
+              content: prompt,
+            },
+          ],
+        },
+      };
+      // Replace with your ChatGPT API call logic
+      const response = await axios.request(options);
+      const data = response.data;
+      return data.choices[0].message.content;
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   async update(
