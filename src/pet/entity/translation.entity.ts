@@ -20,4 +20,10 @@ export class Translation {
 
   @Column()
   petId: string;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }
