@@ -15,6 +15,9 @@ export class Translation {
   @Column({ type: 'varchar', nullable: true })
   label?: string;
 
+  @Column({ type: 'varchar' })
+  languageCode: string;
+
   @Column({ type: 'text', nullable: true })
   voiceUrl?: string;
 
