@@ -59,6 +59,7 @@ export class UserService {
     // Find the user by email or username
     const user = await this.userRepository.findOne({
       where: { hashedEmailOrUsername: crypted },
+      relations: { pets: true }
     });
     if (!user) {
       throw new NotFoundException('user not found');
@@ -108,6 +109,7 @@ export class UserService {
   async findOne(user: User) {
     const foundedUser = await this.userRepository.findOne({
       where: { id: user?.id },
+      relations: { pets: true },
     });
     if (!foundedUser) {
       throw new NotFoundException('ERR_NOT_FOUND_USER');
