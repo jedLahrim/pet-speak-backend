@@ -67,7 +67,7 @@ export class PetService {
     translationDto: TranslationDto,
     voiceFile: Express.Multer.File,
   ): Promise<Pet> {
-    const { text, label } = translationDto;
+    const { text, label, languageCode} = translationDto;
     if (!voiceFile) {
       throw new BadRequestException('No voice file is provided');
     }
@@ -78,6 +78,7 @@ export class PetService {
       voiceUrl: voiceUrl,
       text: text,
       label: label,
+      languageCode: languageCode,
     });
     return this.findOne(id);
   }
