@@ -11,6 +11,10 @@ export class TranslationDto {
 
   @IsOptional()
   @IsString()
+  languageCode?: string;
+
+  @IsOptional()
+  @IsString()
   voiceUrl?: string;
 
   @IsOptional()
