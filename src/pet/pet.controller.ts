@@ -73,6 +73,7 @@ export class PetController {
   }
 
   @Post(':id/translation')
+  @UseGuards(JwtAuthGuard)
   updateTranslation(
     @Param('id') id: string,
     @Body() translationDto: TranslationDto,
