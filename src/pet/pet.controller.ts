@@ -77,7 +77,6 @@ export class PetController {
   updateTranslation(
     @Param('id') id: string,
     @Body() translationDto: TranslationDto,
-    @GetUser() user: User,
   ): Promise<Pet> {
     return this.petService.updateTranslation(id, translationDto);
   }
