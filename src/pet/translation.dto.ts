@@ -3,7 +3,6 @@ import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 export class TranslationDto {
   @IsNotEmpty()
   @IsString()
-  @IsOptional()
   text: string;
 
   @IsOptional()
