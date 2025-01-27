@@ -5,7 +5,6 @@ import {
   Get,
   Param,
   Post,
-  Patch,
   UploadedFile,
   UseGuards,
   UseInterceptors,
@@ -73,7 +72,7 @@ export class PetController {
     return this.petService.findOne(id);
   }
 
-  @Patch(':id/translation')
+  @Post(':id/translation')
   updateTranslation(
     @Param('id') id: string,
     @Body() translationDto: TranslationDto,
