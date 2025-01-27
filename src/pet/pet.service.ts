@@ -71,11 +71,11 @@ export class PetService {
     if (!voiceFile) {
       throw new BadRequestException('No voice file is provided');
     }
-    const voiceUrl = await this.attachmentService.upload(voiceFile);
+    // const voiceUrl = await this.attachmentService.upload(voiceFile);
     const pet = await this.findOne(id);
     await this.createTranslation({
       petId: pet?.id,
-      voiceUrl: voiceUrl,
+      // voiceUrl: voiceUrl,
       text: text,
       label: label,
       languageCode: languageCode,
