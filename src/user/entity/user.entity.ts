@@ -17,7 +17,7 @@ export class User {
   @Column({ unique: true, nullable: true })
   hashedEmailOrUsername?: string;
 
-  @Exclude()
+  
   @Column({ unique: true, nullable: true })
   emailOrUsername?: string;
 
