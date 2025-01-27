@@ -74,13 +74,15 @@ export class PetService {
     // const voiceUrl = await this.attachmentService.upload(voiceFile);
     const pet = await this.findOne(id);
     await this.createTranslation({
-      petId: pet?.id,
+      petId: id,
       // voiceUrl: voiceUrl,
       text: text,
       label: label,
       languageCode: languageCode,
     });
-    return this.findOne(id);
+    return this.petRepository.findOne({
+      where: { id },
+    });
   }
 
   async remove(id: string): Promise<void> {
