@@ -74,14 +74,14 @@ export class PetController {
 
   @Post(':id/translation')
   @UseGuards(JwtAuthGuard)
-  @UseInterceptors(FileInterceptor('voiceFile'))
+  // @UseInterceptors(FileInterceptor('voiceFile'))
   updateTranslation(
-    @UploadedFile() voiceFile: Express.Multer.File,
+    // @UploadedFile() voiceFile: Express.Multer.File,
     @Param('id') id: string,
     @Body() translationDto: TranslationDto,
     @GetUser() user: User,
   ): Promise<Pet> {
-    return this.petService.updateTranslation(id, translationDto, voiceFile);
+    return this.petService.updateTranslation(id, translationDto);
   }
 
 
