@@ -74,7 +74,6 @@ export class PetController {
   }
 
   @Patch(':id/translation')
-  @UseGuards(JwtAuthGuard)
   updateTranslation(
     @Param('id') id: string,
     @Body() translationDto: TranslationDto,
