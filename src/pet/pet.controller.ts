@@ -52,7 +52,7 @@ export class PetController {
     return this.petService.update(profileImageFile, updatePetDto, id);
   }
 
-  @Post('translation')
+  @Post('create/translation')
   @UseGuards(JwtAuthGuard)
   createTranslation(
     @Body() translationDto: TranslationDto,
