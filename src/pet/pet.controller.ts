@@ -51,14 +51,13 @@ export class PetController {
     return this.petService.update(profileImageFile, updatePetDto, id);
   }
 
-  // @Post('translation')
-  // @UseGuards(JwtAuthGuard)
-  // // @UseInterceptors(FileInterceptor('file'))
-  // createTranslation(
-  //   @Body() translationDto: TranslationDto,
-  // ): Promise<Translation> {
-  //   return this.petService.createTranslation(translationDto);
-  // }
+  @Post('translation')
+  @UseGuards(JwtAuthGuard)
+  createTranslation(
+    @Body() translationDto: TranslationDto,
+  ): Promise<Translation> {
+    return this.petService.createTranslation(translationDto);
+  }
 
   // @Get()
   // @UseGuards(JwtAuthGuard)
@@ -72,14 +71,14 @@ export class PetController {
     return this.petService.findOne(id);
   }
 
-  @Post(':id/translation')
-  @UseGuards(JwtAuthGuard)
-  updateTranslation(
-    @Param('id') id: string,
-    @Body() translationDto: TranslationDto,
-  ): Promise<void> {
-    return this.petService.updateTranslation(id, translationDto);
-  }
+  // @Post(':id/translation')
+  // @UseGuards(JwtAuthGuard)
+  // updateTranslation(
+  //   @Param('id') id: string,
+  //   @Body() translationDto: TranslationDto,
+  // ): Promise<void> {
+  //   return this.petService.updateTranslation(id, translationDto);
+  // }
 
 
   @Get(':id/translation')
