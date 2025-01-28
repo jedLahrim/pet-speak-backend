@@ -66,7 +66,7 @@ export class PetService {
     id: string,
     translationDto: TranslationDto,
     // voiceFile: Express.Multer.File,
-  ): Promise<Pet> {
+  ): Promise<void> {
     const { text, label, languageCode} = translationDto;
     // if (!voiceFile) {
     //   throw new BadRequestException('No voice file is provided');
@@ -80,9 +80,6 @@ export class PetService {
       label: label,
       languageCode: languageCode,
     });
-    return this.petRepository.findOne({
-      where: { id },
-    });
   }
 
   async remove(id: string): Promise<void> {
@@ -91,7 +88,6 @@ export class PetService {
   }
 
   async createTranslation(translationDto: TranslationDto) {
-    await this.findOne(translationDto.petId);
     const translations = this.translationRepository.create({
       ...translationDto,
       pet: { id: translationDto.petId },
