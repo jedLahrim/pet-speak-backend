@@ -16,6 +16,7 @@ import {
 import { PetService } from './pet.service';
 import { CreatePetDto } from './create-pet.dto';
 import { Pet } from './entity/pet.entity';
+import { Translation } from './entity/translation.entity';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { TranslationDto } from './translation.dto';
 import { JwtAuthGuard } from '../user/guard/jwt-auth.guard';
