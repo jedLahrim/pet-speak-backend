@@ -93,7 +93,8 @@ export class UserService {
     }
     try {
       await this.userRepository.update(user?.id, {
-        ...createUserDto,
+        emailOrUsername,
+        hashedEmailOrUsername: crypted,
       });
       return await this.userRepository.findOne({
         where: { id: user?.id },
