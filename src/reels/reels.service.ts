@@ -38,8 +38,7 @@ export class ReelsService {
         params,
         headers: Constant.headers,
       });
-
-      if (response?.data?.items) {
+      if (response?.data?.data?.items) {
         for (const item of response.data.items) {
           const reel = this.reelRepository.create({
             title: item.caption?.text ?? '',
