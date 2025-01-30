@@ -17,6 +17,7 @@ export class PaginationState {
   @Column({ nullable: true })
   paginationToken: string;
 
+
   @CreateDateColumn()
   createdAt: Date;
 

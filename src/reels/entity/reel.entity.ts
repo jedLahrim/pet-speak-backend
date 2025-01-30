@@ -14,6 +14,7 @@ export class Reel {
   @CreateDateColumn()
   createdAt: Date;
 
+
   @UpdateDateColumn()
   updatedAt: Date;
 }
