@@ -38,8 +38,8 @@ export class ReelsService {
         params,
         headers: Constant.headers,
       });
-      this.logger.log(`Count ${response}`);
       if (response?.data?.data?.items) {
+        console.log(response?.data)
         for (const item of response.data.items) {
           const reel = this.reelRepository.create({
             title: item.caption?.text ?? '',
