@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post } from "@nestjs/common";
 import { ReelsService } from './reels.service';
 import { Reel } from './entity/reel.entity';
 
@@ -6,7 +6,7 @@ import { Reel } from './entity/reel.entity';
 export class ReelsController {
   constructor(private readonly reelsService: ReelsService) {}
 
-  @Get('fetch')
+  @Post('fetch')
   async fetchReels(): Promise<void> {
     return this.reelsService.scheduledFetchReels();
   }
