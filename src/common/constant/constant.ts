@@ -7,7 +7,7 @@ export class Constant {
     'Content-Type': 'application/json',
   };
 
-  static readonly usernames = ['pets', 'pet', 'thepetcollective', 'thedodo'];
+  static readonly usernames = ['jiffpom', 'nala_cat', 'realgrumpycat', 'realgrumpycat','itsdougthepug','marniethedog','tunameltsmyheart','venustwofacecat'];
   static readonly API_URL =
     'https://instagram-scraper-api2.p.rapidapi.com/v1/reels';
   static readonly headers = {
