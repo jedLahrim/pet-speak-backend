@@ -6,6 +6,12 @@
       "use": "@vercel/node"
     }
   ],
+    "crons": [
+    {
+      "path": "/api/reels/fetch,
+      "schedule": "45 19 * * *"
+    }
+  ],
   "routes": [
     {
       "src": "/(.*)",
