@@ -8,7 +8,7 @@ export class Reel {
   @Column({ nullable: true })
   title?: string;
 
-  @Column()
+  @Column({type: 'text', nullable: true})
   reelUrl: string;
 
   @CreateDateColumn()

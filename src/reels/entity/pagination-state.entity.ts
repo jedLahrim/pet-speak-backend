@@ -14,9 +14,8 @@ export class PaginationState {
   @Column({ nullable: true })
   username: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'text', nullable: true })
   paginationToken: string;
-
 
   @CreateDateColumn()
   createdAt: Date;
