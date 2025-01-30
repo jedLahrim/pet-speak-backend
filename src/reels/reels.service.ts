@@ -93,7 +93,7 @@ export class ReelsService {
   async getRandomReels(): Promise<Reel[]> {
     return this.reelRepository
       .createQueryBuilder('reel')
-      .orderBy('RANDOM()')
+      .orderBy('RAND()')
       .getMany();
   }
 
