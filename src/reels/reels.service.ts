@@ -39,7 +39,7 @@ export class ReelsService {
         headers: Constant.headers,
       });
       if (response?.data?.data?.items) {
-        console.log(response?.data);
+        this.logger.log(`Fetched data for ${username}: ${JSON.stringify(response.data)}`);
         for (const item of response?.data?.data?.items) {
           const reel = this.reelRepository.create({
             title: item.caption?.text ?? '',
@@ -51,7 +51,7 @@ export class ReelsService {
 
       if (savedReels.length > 0) {
         await this.reelRepository.save(savedReels);
-        console.log(`Saved ${savedReels.length} reels for ${username}`);
+        this.logger.log(`Saved ${savedReels.length} reels for ${username}`);
       }
 
       // Return the new pagination token
@@ -68,8 +68,8 @@ export class ReelsService {
    * Cron job to fetch and save reels daily at midnight
    */
   async scheduledFetchReels(): Promise<{ success: string }> {
-    cron.schedule('45 20 * * *', async () => {
-      console.log('Running scheduled job to fetch reels...');
+    cron.schedule('47 20 * * *', async () => {
+      this.logger.log('Running scheduled job to fetch reels...');
 
       for (const username of Constant.usernames) {
         // Get the stored pagination token for this username
@@ -87,9 +87,9 @@ export class ReelsService {
         await this.updatePaginationState(username, newPaginationToken);
       }
 
-      console.log('Finished fetching reels.');
+      this.logger.log('Finished fetching reels.');
     });
-    return {success:'reels fetching Scheduled successfully'}
+    return { success: 'Reels fetching scheduled successfully' };
   }
 
   async getRandomReels(): Promise<Reel[]> {
