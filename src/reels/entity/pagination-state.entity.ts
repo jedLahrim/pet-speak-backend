@@ -2,15 +2,15 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class PaginationState {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-  @Column()
+  @Column({ nullable: true })
   username: string;
 
   @Column({ nullable: true })
   paginationToken: string;
 
-  @Column()
+  @Column({ nullable: true })
   lastUpdated: Date;
 }
