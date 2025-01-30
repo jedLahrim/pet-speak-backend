@@ -1,11 +1,11 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Cron } from '@nestjs/schedule';
 import axios from 'axios';
 import { Reel } from './entity/reel.entity';
 import { PaginationState } from './entity/pagination-state.entity';
 import { Constant } from '../common/constant/constant';
+import * as cron from 'node-cron';
 
 @Injectable()
 export class ReelsService {
@@ -39,8 +39,8 @@ export class ReelsService {
         headers: Constant.headers,
       });
       if (response?.data?.data?.items) {
-        console.log(response?.data)
-        for (const item of response.data.items) {
+        console.log(response?.data);
+        for (const item of response?.data?.data?.items) {
           const reel = this.reelRepository.create({
             title: item.caption?.text ?? '',
             reelUrl: item.video_url_original,
@@ -51,7 +51,7 @@ export class ReelsService {
 
       if (savedReels.length > 0) {
         await this.reelRepository.save(savedReels);
-        this.logger.log(`Saved ${savedReels.length} reels for ${username}`);
+        console.log(`Saved ${savedReels.length} reels for ${username}`);
       }
 
       // Return the new pagination token
@@ -67,27 +67,29 @@ export class ReelsService {
   /**
    * Cron job to fetch and save reels daily at midnight
    */
-  @Cron('0 0 * * *') // Runs at midnight every day
-  async scheduledFetchReels(): Promise<void> {
-    this.logger.log('Running scheduled job to fetch reels...');
+  async scheduledFetchReels(): Promise<{ success: string }> {
+    cron.schedule('0 0 * * *', async () => {
+      console.log('Running scheduled job to fetch reels...');
 
-    for (const username of Constant.usernames) {
-      // Get the stored pagination token for this username
-      const state = await this.paginationStateRepository.findOne({
-        where: { username },
-      });
+      for (const username of Constant.usernames) {
+        // Get the stored pagination token for this username
+        const state = await this.paginationStateRepository.findOne({
+          where: { username },
+        });
 
-      // Fetch reels using the stored pagination token
-      const newPaginationToken = await this.fetchAndSaveReelsForUsername(
-        username,
-        state?.paginationToken,
-      );
+        // Fetch reels using the stored pagination token
+        const newPaginationToken = await this.fetchAndSaveReelsForUsername(
+          username,
+          state?.paginationToken,
+        );
 
-      // Store the new pagination token for next time
-      await this.updatePaginationState(username, newPaginationToken);
-    }
+        // Store the new pagination token for next time
+        await this.updatePaginationState(username, newPaginationToken);
+      }
 
-    this.logger.log('Finished fetching reels.');
+      console.log('Finished fetching reels.');
+    });
+    return {success:'reels fetching Scheduled successfully'}
   }
 
   async getRandomReels(): Promise<Reel[]> {
