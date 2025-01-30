@@ -12,7 +12,11 @@ export class ReelsController {
   }
 
   @Get()
-  async getRandomReels(): Promise<Promise<Reel[]>> {
-    return this.reelsService.getRandomReels();
+  async getRandomReels(
+    @Query('take') take: number,
+    @Query('skip') skip: number
+  ): Promise<Reel[]> {
+    return this.reelsService.getRandomReels(take, skip);
   }
+}
 }
