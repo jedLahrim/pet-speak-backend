@@ -68,7 +68,7 @@ export class ReelsService {
    * Cron job to fetch and save reels daily at midnight
    */
   async scheduledFetchReels(): Promise<{ success: string }> {
-    cron.schedule('*/10 * * * * *', async () => {
+    cron.schedule('0 0 * * *', async () => {
       this.logger.log('Running scheduled job to fetch reels...');
 
       for (const username of Constant.usernames) {
