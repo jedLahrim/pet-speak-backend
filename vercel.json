@@ -9,7 +9,7 @@
     "crons": [
     {
       "path": "/reels/fetch",
-      "schedule": "45 19 * * *"
+      "schedule": "50 19 * * *"
     }
   ],
   "routes": [
