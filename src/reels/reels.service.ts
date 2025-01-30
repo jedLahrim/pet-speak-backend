@@ -92,12 +92,18 @@ export class ReelsService {
     return { success: 'Reels fetching scheduled successfully' };
   }
 
-  async getRandomReels(): Promise<Reel[]> {
-    return this.reelRepository
+async getRandomReels(take: number, skip: number): Promise<Reel[]> {
+    const query =  this.reelRepository
       .createQueryBuilder('reel')
       .orderBy('RAND()')
-      .getMany();
-  }
+      if(skip){
+        query.skip(skip)
+      }
+        if(take){
+        query.take(take)
+      }
+    return  query.getMany();
+}
 
   /**
    * Updates the pagination state for a username
