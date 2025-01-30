@@ -16,7 +16,7 @@ import { ReelsModule } from './reels/reels.module';
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.HOST,
-      port: +process.env.PORT,
+      port: +process.env.DATABASE_PORT,
       username: process.env.USERNAME,
       password: process.env.PASSWORD,
       database: process.env.DATABASE,
