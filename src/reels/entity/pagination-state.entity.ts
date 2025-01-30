@@ -1,6 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
-@Entity()
+@Entity('pagination_state')
 export class PaginationState {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -11,6 +17,9 @@ export class PaginationState {
   @Column({ nullable: true })
   paginationToken: string;
 
-  @Column({ nullable: true })
-  lastUpdated: Date;
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

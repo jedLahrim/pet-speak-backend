@@ -1,6 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
-@Entity()
+@Entity('reel')
 export class Reel {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -10,4 +10,10 @@ export class Reel {
 
   @Column()
   reelUrl: string;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

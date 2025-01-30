@@ -113,7 +113,6 @@ export class ReelsService {
     }
 
     state.paginationToken = paginationToken;
-    state.lastUpdated = new Date();
 
     await this.paginationStateRepository.save(state);
   }
