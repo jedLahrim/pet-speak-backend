@@ -6,4 +6,12 @@ export class Constant {
     'x-rapidapi-host': 'chatgpt-best-price.p.rapidapi.com',
     'Content-Type': 'application/json',
   };
+
+  static readonly usernames = ['pets', 'pet', 'thepetcollective', 'thedodo'];
+  static readonly API_URL =
+    'https://instagram-scraper-api2.p.rapidapi.com/v1/reels';
+  static readonly headers = {
+    'x-rapidapi-key': '4fb84e5862msh93493191641aa67p1730ebjsn9a38755eabe6',
+    'x-rapidapi-host': 'instagram-scraper-api2.p.rapidapi.com',
+  };
 }

@@ -4,7 +4,7 @@ import { UserModule } from './user/user.module';
 import { PetModule } from './pet/pet.module';
 import { AttachmentModule } from './attachment/attachment.module';
 import { ConfigModule } from '@nestjs/config';
-import * as process from 'node:process';
+import { ReelsModule } from './reels/reels.module';
 
 @Module({
   imports: [
@@ -15,11 +15,11 @@ import * as process from 'node:process';
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: process.env.HOST,
-      port: +process.env.PORT,
-      username: process.env.USERNAME,
-      password: process.env.PASSWORD,
-      database: process.env.DATABASE,
+      host: 'localhost',
+      port: 8889,
+      username: 'root',
+      password: 'root',
+      database: 'lingo_pet',
       autoLoadEntities: true,
       retryDelay: 5000,
       synchronize: true, // Disable in production!
@@ -28,6 +28,7 @@ import * as process from 'node:process';
     UserModule,
     PetModule,
     AttachmentModule,
+    ReelsModule,
   ],
 })
 export class AppModule {}
