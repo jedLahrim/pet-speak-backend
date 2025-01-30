@@ -15,11 +15,11 @@ import { ReelsModule } from './reels/reels.module';
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      port: 8889,
-      username: 'root',
-      password: 'root',
-      database: 'lingo_pet',
+      host: process.env.HOST,
+      port: +process.env.PORT,
+      username: process.env.USERNAME,
+      password: process.env.PASSWORD,
+      database: process.env.DATABASE,
       autoLoadEntities: true,
       retryDelay: 5000,
       synchronize: true, // Disable in production!
