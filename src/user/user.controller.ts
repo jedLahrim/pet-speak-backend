@@ -34,4 +34,10 @@ export class UserController {
   async findOne(@GetUser() user: User): Promise<User> {
     return await this.userService.findOne(user);
   }
+
+  @Delete()
+  @UseGuards(JwtAuthGuard)
+  async delete(@GetUser() user: User): Promise<User> {
+    return await this.userService.delete(user);
+  }
 }
