@@ -19,4 +19,3 @@ export class ReelsController {
     return this.reelsService.getRandomReels(take, skip);
   }
 }
-}
