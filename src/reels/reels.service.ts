@@ -84,7 +84,7 @@ async deleteExpiredReels() {
  */
 async scheduledFetchReels(): Promise<{ success: string }> {
   // Run every day at midnight UTC
-  cron.schedule('20 13 * * *', async () => {
+  cron.schedule('27 13 * * *', async () => {
     this.logger.log('Running scheduled job to fetch reels...');
     
     // First, delete expired reels
