@@ -11,7 +11,7 @@ export class Constant {
   static readonly API_URL =
     'https://instagram-scraper-api2.p.rapidapi.com/v1/reels';
   static readonly headers = {
-    'x-rapidapi-key': '4fb84e5862msh93493191641aa67p1730ebjsn9a38755eabe6',
+    'x-rapidapi-key': '6789eae184msh516c6842cc65df5p16bcffjsn62cda002e24c',
     'x-rapidapi-host': 'instagram-scraper-api2.p.rapidapi.com',
   };
 }
