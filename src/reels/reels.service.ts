@@ -65,7 +65,7 @@ async fetchAndSaveReelsForUsername(
 /**
  * Delete reels that are older than 24 hours
  */
-async deleteExpiredReels(): Promise<void> {
+async deleteExpiredReels() {
   try {
     const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
     
