@@ -37,7 +37,7 @@ export class UserController {
 
   @Delete()
   @UseGuards(JwtAuthGuard)
-  async delete(@GetUser() user: User): Promise<User> {
+  async delete(@GetUser() user: User): Promise<void> {
     return await this.userService.delete(user);
   }
 }
