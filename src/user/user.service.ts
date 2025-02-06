@@ -115,6 +115,11 @@ export class UserService {
     if (!foundedUser) {
       throw new NotFoundException('ERR_NOT_FOUND_USER');
     }
+     const accessToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY, {
+      expiresIn: '15d',
+    });
+
+    foundedUser.access = accessToken;
     return foundedUser;
   }
 
