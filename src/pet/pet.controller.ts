@@ -3,15 +3,13 @@ import {
   Controller,
   Delete,
   Get,
+  NotFoundException,
   Param,
   Post,
+  Query,
   UploadedFile,
   UseGuards,
   UseInterceptors,
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-  Query
 } from '@nestjs/common';
 import { PetService } from './pet.service';
 import { CreatePetDto } from './create-pet.dto';
@@ -25,6 +23,7 @@ import { User } from '../user/entity/user.entity';
 import { GenerateSuggestionDto } from './generate-suggestion.dto';
 import { UpdatePetDto } from './update-pet.dto';
 import { FilterPetDto } from './filter-pet.dto';
+import { ChatDto } from './chat.dto';
 
 @Controller('pets')
 export class PetController {
@@ -81,7 +80,6 @@ export class PetController {
   //   return this.petService.updateTranslation(id, translationDto);
   // }
 
-
   @Get(':id/translation')
   async getTranslation(@Param('id') id: string): Promise<Translation> {
     try {
@@ -100,12 +98,14 @@ export class PetController {
     }
   }
 
-@Get()
-async getAllTranslations(@Query() filterPetDto: FilterPetDto): Promise<Translation[]> {
-  const { petId } = filterPetDto;
-  return await this.petService.getAllTranslations(petId);
-}
-  
+  @Get()
+  async getAllTranslations(
+    @Query() filterPetDto: FilterPetDto,
+  ): Promise<Translation[]> {
+    const { petId } = filterPetDto;
+    return await this.petService.getAllTranslations(petId);
+  }
+
   @Delete(':id')
   @UseGuards(JwtAuthGuard)
   remove(@Param('id') id: string): Promise<void> {
@@ -118,5 +118,11 @@ async getAllTranslations(@Query() filterPetDto: FilterPetDto): Promise<Translati
     @Body() generateSuggestionDto: GenerateSuggestionDto,
   ): Promise<{ speech: string }> {
     return this.petService.generateSuggestion(generateSuggestionDto);
+  }
+
+  @Post('generate/chat')
+  @UseGuards(JwtAuthGuard)
+  chat(@Body() dto: ChatDto) {
+    return this.petService.chat(dto);
   }
 }

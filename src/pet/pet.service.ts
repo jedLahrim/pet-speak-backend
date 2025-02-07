@@ -1,8 +1,4 @@
-import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Pet } from './entity/pet.entity';
@@ -18,6 +14,7 @@ import * as path from 'node:path';
 import { Constant } from '../common/constant/constant';
 import { UpdatePetDto } from './update-pet.dto';
 import axios from 'axios';
+import { ChatDto } from './chat.dto';
 
 @Injectable()
 export class PetService {
@@ -67,7 +64,7 @@ export class PetService {
     translationDto: TranslationDto,
     // voiceFile: Express.Multer.File,
   ): Promise<void> {
-    const { text, label, languageCode} = translationDto;
+    const { text, label, languageCode } = translationDto;
     // if (!voiceFile) {
     //   throw new BadRequestException('No voice file is provided');
     // }
@@ -147,23 +144,7 @@ export class PetService {
     try {
       const prompt = `Please Generates a 300 characters text rewriting the following text with a clear and concise explanation in the same language code ${languageCode}. Ensure the generated text is not less than 300 characters. Do not exceed or fall short of this range. 
               Here is the text: ${originalText}`;
-      const options = {
-        method: 'POST',
-        url: Constant.OPEN_AI_URL,
-        headers: Constant.OPEN_AI_HEADERS,
-        data: {
-          model: 'gpt-4o-mini',
-          messages: [
-            {
-              role: 'user',
-              content: prompt,
-            },
-          ],
-        },
-      };
-      // Replace with your ChatGPT API call logic
-      const response = await axios.request(options);
-      const data = response.data;
+      const data = await this._callAi(prompt);
       return data.choices[0].message.content;
     } catch (e) {
       console.log(e);
@@ -185,26 +166,65 @@ export class PetService {
   }
 
   async getTranslation(id: string): Promise<Translation> {
-  const translation = await this.translationRepository.findOne({ where: { id } });
-  if (!translation) {
-    throw new NotFoundException(`Translation with ID ${id} not found`);
+    const translation = await this.translationRepository.findOne({
+      where: { id },
+    });
+    if (!translation) {
+      throw new NotFoundException(`Translation with ID ${id} not found`);
+    }
+    return translation;
   }
-  return translation;
-}
 
-async deleteTranslation(id: string): Promise<void> {
-  const translation = await this.getTranslation(id);
-  await this.translationRepository.remove(translation);
-}
+  async deleteTranslation(id: string): Promise<void> {
+    const translation = await this.getTranslation(id);
+    await this.translationRepository.remove(translation);
+  }
 
-async getAllTranslations(petId: string): Promise<Translation[]> {
-  const translations = await this.translationRepository
-    .createQueryBuilder('translation')
-    .where('translation.petId = :petId', { petId })
-     .orderBy('translation.createdAt', 'DESC')
-    .getMany();
+  async getAllTranslations(petId: string): Promise<Translation[]> {
+    const translations = await this.translationRepository
+      .createQueryBuilder('translation')
+      .where('translation.petId = :petId', { petId })
+      .orderBy('translation.createdAt', 'DESC')
+      .getMany();
 
-  return translations;
-}
+    return translations;
+  }
 
+  async chat(dto: ChatDto): Promise<{ message: string }> {
+    const { text } = dto;
+    const data = await this._callAi(text, true);
+    return data.choices[0].message;
+  }
+
+  private async _callAi(prompt: string, isPetExpert = false) {
+    const options = {
+      method: 'POST',
+      url: Constant.OPEN_AI_URL,
+      headers: Constant.OPEN_AI_HEADERS,
+      data: {
+        model: 'gpt-4o-mini',
+        messages: isPetExpert
+          ? [
+              {
+                role: 'system',
+                content: 'You are a pet expert.',
+              },
+              {
+                role: 'user',
+                content: prompt,
+              },
+            ]
+          : [
+              {
+                role: 'user',
+                content: prompt,
+              },
+            ],
+      },
+    };
+
+    // Replace with your ChatGPT API call logic
+    const response = await axios.request(options);
+    return response.data;
+  }
 }
