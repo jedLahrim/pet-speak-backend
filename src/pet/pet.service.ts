@@ -202,7 +202,7 @@ export class PetService {
       url: Constant.OPEN_AI_URL,
       headers: Constant.OPEN_AI_HEADERS,
       data: {
-        model: 'gpt-4o-mini',
+        model: 'gpt-3.5-turbo',
         messages: isPetExpert
           ? [
               {
