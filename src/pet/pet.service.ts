@@ -15,6 +15,10 @@ import { Constant } from '../common/constant/constant';
 import { UpdatePetDto } from './update-pet.dto';
 import axios from 'axios';
 import { ChatDto } from './chat.dto';
+import { PetType } from './enums/pet-type.enum';
+import * as catQuiz from './assets/json/cat-quiz.json';
+import * as dogQuiz from './assets/json/dog-quiz.json';
+import { Question } from './entity/questions.entity';
 
 @Injectable()
 export class PetService {
@@ -24,7 +28,8 @@ export class PetService {
     @InjectRepository(Translation)
     private readonly translationRepository: Repository<Translation>,
     private readonly attachmentService: AttachmentService,
-  ) {}
+  ) {
+  }
 
   async create(
     profileImageFile: Express.Multer.File,
@@ -196,6 +201,27 @@ export class PetService {
     return data.choices[0].message;
   }
 
+  getQuiz(dto: { petType: PetType }) {
+    const { petType } = dto;
+    switch (petType) {
+      case PetType.CAT:
+        return this.getRandomItems(catQuiz, 5);
+      case PetType.DOG:
+        return this.getRandomItems(dogQuiz, 5);
+    }
+  }
+
+  getRandomItems(array: Array<Question>, count: number) {
+    array = array?.map(value => {
+      return {
+        id: crypto.randomUUID(),
+        ...value,
+      };
+    });
+    const shuffled = array?.sort(() => 0.5 - Math.random());
+    return shuffled?.slice(0, count);
+  };
+
   private async _callAi(prompt: string, isPetExpert = false) {
     const options = {
       method: 'POST',
@@ -205,21 +231,21 @@ export class PetService {
         model: 'gpt-3.5-turbo',
         messages: isPetExpert
           ? [
-              {
-                role: 'system',
-                content: 'You are a pet expert.',
-              },
-              {
-                role: 'user',
-                content: prompt,
-              },
-            ]
+            {
+              role: 'system',
+              content: 'You are a pet expert.',
+            },
+            {
+              role: 'user',
+              content: prompt,
+            },
+          ]
           : [
-              {
-                role: 'user',
-                content: prompt,
-              },
-            ],
+            {
+              role: 'user',
+              content: prompt,
+            },
+          ],
       },
     };
 

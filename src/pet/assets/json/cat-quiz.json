@@ -1,0 +1,472 @@
+[
+  {
+    "question": "What is the most popular cat breed in the United States?",
+    "options": [
+      "Persian",
+      "Maine Coon",
+      "Siamese",
+      "Ragdoll"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "How many lives is a cat said to have?",
+    "options": [
+      "5",
+      "7",
+      "9",
+      "11"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is a common sign of a happy cat?",
+    "options": [
+      "Hissing",
+      "Purring",
+      "Growling",
+      "Biting"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What do cats use to communicate?",
+    "options": [
+      "Barking",
+      "Purring",
+      "Meowing",
+      "Chirping"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is a common health issue in older cats?",
+    "options": [
+      "Obesity",
+      "Diabetes",
+      "Kidney disease",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the average lifespan of an indoor cat?",
+    "options": [
+      "5-10 years",
+      "10-15 years",
+      "15-20 years",
+      "20-25 years"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a cat's primary diet?",
+    "options": [
+      "Vegetables",
+      "Fish",
+      "Meat",
+      "Grains"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is a common reason for a cat to scratch furniture?",
+    "options": [
+      "Boredom",
+      "Hunger",
+      "To sharpen claws",
+      "To play"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the term for a cat that is not purebred?",
+    "options": [
+      "Mixed breed",
+      "Domestic",
+      "Stray",
+      "All of the above"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign that a cat is stressed?",
+    "options": [
+      "Purring",
+      "Hiding",
+      "Playing",
+      "Eating"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to introduce a new cat to your home?",
+    "options": [
+      "Throw them in the yard",
+      "Let them explore slowly",
+      "Isolate them",
+      "Only let them meet family"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep a cat entertained?",
+    "options": [
+      "Leave them alone",
+      "Provide toys and games",
+      "Ignore them",
+      "Only take them outside"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign of a cat being bored?",
+    "options": [
+      "Sleeping",
+      "Scratching furniture",
+      "Meowing",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to groom a cat?",
+    "options": [
+      "Brush regularly",
+      "Only when dirty",
+      "Once a year",
+      "Never groom"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the primary reason cats groom themselves?",
+    "options": [
+      "To look pretty",
+      "To cool down",
+      "To remove dirt and parasites",
+      "To play"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is a common command that cats can learn?",
+    "options": [
+      "Sit",
+      "Stay",
+      "Come",
+      "None of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to keep your cat healthy?",
+    "options": [
+      "Regular vet visits",
+      "Feeding junk food",
+      "Ignoring exercise",
+      "Letting them roam free"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the term for a cat that helps control pests?",
+    "options": [
+      "Service cat",
+      "Mouser",
+      "Pet",
+      "Show cat"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to tell if a cat is happy?",
+    "options": [
+      "Purring",
+      "Hiding",
+      "Biting",
+      "Scratching"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is a common reason for a cat to meow?",
+    "options": [
+      "Happiness",
+      "Hunger",
+      "Attention-seeking",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is a common sign of a cat being in pain?",
+    "options": [
+      "Purring",
+      "Hiding",
+      "Playing",
+      "Eating"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep your cat hydrated?",
+    "options": [
+      "Letting them drink from puddles",
+      "Providing fresh water",
+      "Ignoring it",
+      "Only giving food"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to prevent hairballs in cats?",
+    "options": [
+      "Regular grooming",
+      "Ignoring grooming",
+      "Only bathing",
+      "Feeding junk food"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is a common sign that a cat is sick?",
+    "options": [
+      "Barking",
+      "Hiding",
+      "Eating a lot",
+      "Playing"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to introduce a cat to water?",
+    "options": [
+      "Throw them in",
+      "Let them explore gradually",
+      "Ignore their fear",
+      "Only let them watch"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common reason for cats to chase after things?",
+    "options": [
+      "Boredom",
+      "Happiness",
+      "Hunting instinct",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to keep your cat's litter box clean?",
+    "options": [
+      "Ignoring it",
+      "Cleaning it regularly",
+      "Only cleaning when it smells",
+      "Letting it overflow"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to care for an older cat?",
+    "options": [
+      "Ignore their needs",
+      "Regular vet check-ups",
+      "Feed them junk food",
+      "Let them do whatever they want"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common reason for cats to knead?",
+    "options": [
+      "Happiness",
+      "Hunger",
+      "To mark territory",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to keep your cat safe during a thunderstorm?",
+    "options": [
+      "Ignore it",
+      "Provide a safe space",
+      "Let them roam outside",
+      "Yell at them"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign of a cat being protective?",
+    "options": [
+      "Barking",
+      "Hissing",
+      "Standing tall",
+      "All of the above"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep your cat entertained indoors?",
+    "options": [
+      "Toys and games",
+      "Ignoring them",
+      "Only letting them sleep",
+      "Leaving them alone"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is a common way to exercise a cat?",
+    "options": [
+      "Toys",
+      "Chasing laser pointers",
+      "Playing fetch",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to introduce a cat to new people?",
+    "options": [
+      "Force them to meet",
+      "Let them approach slowly",
+      "Ignore the cat",
+      "Only let them meet family"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign that a cat is excited?",
+    "options": [
+      "Purring",
+      "Tail up",
+      "Hiding",
+      "All of the above"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to clean a cat's ears?",
+    "options": [
+      "Using cotton swabs",
+      "Using a damp cloth",
+      "Ignoring ear care",
+      "Only when they smell"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep your cat from jumping on counters?",
+    "options": [
+      "Yell at it",
+      "Provide alternatives",
+      "Ignore it",
+      "Encourage jumping"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign of a cat being anxious?",
+    "options": [
+      "Barking",
+      "Panting",
+      "Hiding",
+      "All of the above"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the best way to keep your cat from getting bored?",
+    "options": [
+      "Provide toys",
+      "Ignore them",
+      "Only feed them",
+      "Let them sleep all day"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is a common reason for cats to purr?",
+    "options": [
+      "Happiness",
+      "Relaxation",
+      "Healing",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to keep your cat's claws trimmed?",
+    "options": [
+      "Ignoring it",
+      "Regular trimming",
+      "Only when they are long",
+      "Letting them scratch furniture"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to care for a kitten?",
+    "options": [
+      "Ignoring it",
+      "Providing proper nutrition",
+      "Letting it roam free",
+      "Only giving treats"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign of a cat being territorial?",
+    "options": [
+      "Purring",
+      "Hissing",
+      "Kneading",
+      "All of the above"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to help a cat with anxiety?",
+    "options": [
+      "Ignore it",
+      "Provide a safe space",
+      "Yell at it",
+      "Leave it alone"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep your cat's coat healthy?",
+    "options": [
+      "Regular brushing",
+      "Ignoring grooming",
+      "Only bathing",
+      "Feeding junk food"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is a common reason for cats to hide?",
+    "options": [
+      "Happiness",
+      "Fear",
+      "Hunger",
+      "All of the above"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep your cat's environment stimulating?",
+    "options": [
+      "Providing climbing spaces",
+      "Ignoring it",
+      "Only giving food",
+      "Letting them sleep all day"
+    ],
+    "correctAnswer": 0
+  }
+]

@@ -24,10 +24,12 @@ import { GenerateSuggestionDto } from './generate-suggestion.dto';
 import { UpdatePetDto } from './update-pet.dto';
 import { FilterPetDto } from './filter-pet.dto';
 import { ChatDto } from './chat.dto';
+import { PetType } from './enums/pet-type.enum';
 
 @Controller('pets')
 export class PetController {
-  constructor(private readonly petService: PetService) {}
+  constructor(private readonly petService: PetService) {
+  }
 
   @Post()
   @UseGuards(JwtAuthGuard)
@@ -124,5 +126,11 @@ export class PetController {
   @UseGuards(JwtAuthGuard)
   chat(@Body() dto: ChatDto) {
     return this.petService.chat(dto);
+  }
+
+  @Post('generate/quiz')
+  @UseGuards(JwtAuthGuard)
+  getQuiz(@Body() dto: { petType: PetType }) {
+    return this.petService.getQuiz(dto);
   }
 }
