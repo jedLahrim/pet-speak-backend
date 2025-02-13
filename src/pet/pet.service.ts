@@ -16,8 +16,8 @@ import { UpdatePetDto } from './update-pet.dto';
 import axios from 'axios';
 import { ChatDto } from './chat.dto';
 import { PetType } from './enums/pet-type.enum';
-import * as catQuiz from './assets/json/cat-quiz.json';
-import * as dogQuiz from './assets/json/dog-quiz.json';
+import catQuiz from './assets/json/cat-quiz.json';
+import dogQuiz from './assets/json/dog-quiz.json';
 import { Question } from './entity/questions.entity';
 
 @Injectable()
