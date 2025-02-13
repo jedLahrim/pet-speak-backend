@@ -128,7 +128,7 @@ export class PetController {
     return this.petService.chat(dto);
   }
 
-  @Get('generate/quiz')
+  @Post('generate/quiz')
   @UseGuards(JwtAuthGuard)
   getQuiz(@Body() dto: { petType: PetType }) {
     return this.petService.getQuiz(dto);
