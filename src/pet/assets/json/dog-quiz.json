@@ -678,5 +678,1555 @@
       "All of the above"
     ],
     "correctAnswer": 3
+  },
+  {
+    "question": "What is the most popular dog breed in the world?",
+    "options": [
+      "Labrador Retriever",
+      "German Shepherd",
+      "Golden Retriever",
+      "Bulldog"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is a common sign that a dog is scared?",
+    "options": [
+      "Barking",
+      "Cowering",
+      "Tail wagging",
+      "Growling"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to train a dog to come when called?",
+    "options": [
+      "Yelling at them",
+      "Using treats and positive reinforcement",
+      "Ignoring them",
+      "Punishing them"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What breed is known for its excellent sense of smell?",
+    "options": [
+      "Beagle",
+      "Poodle",
+      "Dachshund",
+      "Chihuahua"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the average weight of a medium-sized dog?",
+    "options": [
+      "10-20 lbs",
+      "20-50 lbs",
+      "50-80 lbs",
+      "80-100 lbs"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to introduce a dog to a new pet?",
+    "options": [
+      "Force them to meet",
+      "Let them sniff each other",
+      "Ignore the introduction",
+      "Only let them see each other from a distance"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common reason dogs bark?",
+    "options": [
+      "To express joy",
+      "To get attention",
+      "To alert their owners",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to clean a dog's teeth?",
+    "options": [
+      "Brushing with dog toothpaste",
+      "Using a cloth",
+      "Only giving dental treats",
+      "Ignoring dental care"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is a common sign that a dog is feeling unwell?",
+    "options": [
+      "Barking",
+      "Sleeping more than usual",
+      "Eating a lot",
+      "Playing"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep a dog entertained while at home?",
+    "options": [
+      "Providing toys and puzzles",
+      "Ignoring them",
+      "Only letting them sleep",
+      "Leaving them alone"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the primary purpose of a dog's collar?",
+    "options": [
+      "Fashion",
+      "Identification and control",
+      "Comfort",
+      "None of the above"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What breed is often referred to as a 'gentle giant'?",
+    "options": [
+      "Great Dane",
+      "Chihuahua",
+      "Pomeranian",
+      "Yorkshire Terrier"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to prevent obesity in dogs?",
+    "options": [
+      "Regular exercise and a balanced diet",
+      "Feeding them table scraps",
+      "Ignoring their weight",
+      "Only giving treats"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is a common command used to help a dog relax?",
+    "options": [
+      "Sit",
+      "Stay",
+      "Lie down",
+      "Come"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the term for a dog that helps in search and rescue operations?",
+    "options": [
+      "Service dog",
+      "Rescue dog",
+      "Hunting dog",
+      "Show dog"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common way to keep dogs cool in hot weather?",
+    "options": [
+      "Providing shade and water",
+      "Leaving them outside",
+      "Ignoring them",
+      "Only giving them food"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to transport a dog safely in a vehicle?",
+    "options": [
+      "In the trunk",
+      "In a crate or with a seatbelt harness",
+      "Letting them roam free",
+      "In the back seat without a seatbelt"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign that a dog is feeling anxious?",
+    "options": [
+      "Barking",
+      "Panting",
+      "Hiding",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the average lifespan of a small dog?",
+    "options": [
+      "5-8 years",
+      "10-15 years",
+      "15-20 years",
+      "20-25 years"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common reason dogs chew on things?",
+    "options": [
+      "Boredom",
+      "Hunger",
+      "To find treasure",
+      "To escape"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to introduce a dog to water?",
+    "options": [
+      "Throw them in",
+      "Let them explore gradually",
+      "Ignore their fear",
+      "Only let them watch"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign of a dog being protective?",
+    "options": [
+      "Barking",
+      "Growling",
+      "Standing tall",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to keep your dog's coat healthy?",
+    "options": [
+      "Regular brushing",
+      "Ignoring grooming",
+      "Only bathing",
+      "Feeding junk food"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to reward a dog for good behavior?",
+    "options": [
+      "Ignoring it",
+      "Giving treats",
+      "Yelling at it",
+      "Taking away its toys"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common reason for dogs to chase their tails?",
+    "options": [
+      "Boredom",
+      "Happiness",
+      "Attention-seeking",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to prevent fleas on dogs?",
+    "options": [
+      "Regular baths",
+      "Flea medication",
+      "Ignoring it",
+      "Letting them play outside"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common command taught to dogs?",
+    "options": [
+      "Sit",
+      "Dance",
+      "Sing",
+      "Jump"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to keep your dog safe during a thunderstorm?",
+    "options": [
+      "Ignore it",
+      "Provide a safe space",
+      "Let them roam outside",
+      "Yell at them"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep your dog from jumping on people?",
+    "options": [
+      "Ignore it",
+      "Reward calm behavior",
+      "Yell at it",
+      "Encourage jumping"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign of a dog being bored?",
+    "options": [
+      "Digging",
+      "Barking",
+      "Chewing furniture",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to care for an older dog?",
+    "options": [
+      "Ignore their needs",
+      "Regular vet check-ups",
+      "Feed them junk food",
+      "Let them do whatever they want"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the average heart rate of a dog?",
+    "options": [
+      "60-100 bpm",
+      "100-140 bpm",
+      "140-180 bpm",
+      "180-220 bpm"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep your dog hydrated?",
+    "options": [
+      "Letting them drink from puddles",
+      "Providing fresh water",
+      "Ignoring it",
+      "Only giving food"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign that a dog is excited?",
+    "options": [
+      "Barking",
+      "Tail wagging",
+      "Jumping",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to prevent separation anxiety in dogs?",
+    "options": [
+      "Ignoring it",
+      "Gradual desensitization",
+      "Yelling at them",
+      "Leaving them alone for long periods"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to train a dog not to bark?",
+    "options": [
+      "Ignoring it",
+      "Positive reinforcement",
+      "Yelling",
+      "Punishment"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to introduce a dog to a new environment?",
+    "options": [
+      "Throw them in",
+      "Let them explore gradually",
+      "Ignore their fear",
+      "Only let them watch"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common reason for dogs to dig?",
+    "options": [
+      "Boredom",
+      "Hunger",
+      "To find treasure",
+      "To escape"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to keep your dog warm in winter?",
+    "options": [
+      "Leave them outside",
+      "Provide a warm bed",
+      "Ignore them",
+      "Only give them food"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to clean a dog's ears?",
+    "options": [
+      "Using cotton swabs",
+      "Using a damp cloth",
+      "Ignoring ear care",
+      "Only when they smell"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign of a dog being sick?",
+    "options": [
+      "Barking",
+      "Hiding",
+      "Eating a lot",
+      "Playing"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to help a dog with anxiety?",
+    "options": [
+      "Ignore it",
+      "Provide a safe space",
+      "Yell at it",
+      "Leave it alone"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the average number of puppies in a litter?",
+    "options": [
+      "1-3",
+      "4-6",
+      "7-9",
+      "10-12"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to exercise a dog?",
+    "options": [
+      "Walking",
+      "Running",
+      "Playing fetch",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is a common sign that a dog is hungry?",
+    "options": [
+      "Barking",
+      "Pawing at their food bowl",
+      "Growling",
+      "Sleeping"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to introduce a dog to new people?",
+    "options": [
+      "Force them to meet",
+      "Let them approach slowly",
+      "Ignore the dog",
+      "Only let them meet family"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep your dog safe from parasites?",
+    "options": [
+      "Regular vet check-ups and medication",
+      "Ignoring it",
+      "Only bathing them",
+      "Letting them play outside"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to reward a dog for good behavior?",
+    "options": [
+      "Ignoring it",
+      "Giving treats",
+      "Yelling at it",
+      "Taking away its toys"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the average number of teeth in an adult dog?",
+    "options": [
+      "28",
+      "32",
+      "42",
+      "50"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is a common sign of a dog being playful?",
+    "options": [
+      "Barking",
+      "Play bowing",
+      "Chasing their tail",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the largest dog breed?",
+    "options": [
+      "Great Dane",
+      "St. Bernard",
+      "Mastiff",
+      "Irish Wolfhound"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is a common sign that a dog is excited?",
+    "options": [
+      "Barking",
+      "Tail wagging",
+      "Cowering",
+      "Growling"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which breed is known for its herding ability?",
+    "options": [
+      "Border Collie",
+      "Poodle",
+      "Beagle",
+      "Chihuahua"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to socialize a puppy?",
+    "options": [
+      "Keep it isolated",
+      "Introduce it to many people and dogs",
+      "Only let it meet family",
+      "Avoid new experiences"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the term for a dog that helps people with disabilities?",
+    "options": [
+      "Service dog",
+      "Guard dog",
+      "Hunting dog",
+      "Show dog"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What should you do if your dog is barking excessively?",
+    "options": [
+      "Ignore it",
+      "Yell at the dog",
+      "Find the cause",
+      "Give it a treat"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is a common sign of a happy dog?",
+    "options": [
+      "Barking",
+      "Tail wagging",
+      "Growling",
+      "Whining"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to train a dog?",
+    "options": [
+      "Yelling at them",
+      "Positive reinforcement",
+      "Ignoring bad behavior",
+      "Punishing them"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the primary reason dogs bark?",
+    "options": [
+      "To sing",
+      "To play",
+      "To communicate",
+      "To eat"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is a common toy for dogs?",
+    "options": [
+      "Frisbee",
+      "Tennis ball",
+      "Stuffed animal",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What breed is known for its distinctive blue-black tongue?",
+    "options": [
+      "Labrador",
+      "Chow Chow",
+      "Dalmatian",
+      "Beagle"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a dog's primary diet?",
+    "options": [
+      "Vegetables",
+      "Meat",
+      "Grains",
+      "Fruits"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep your dog healthy?",
+    "options": [
+      "Regular vet visits",
+      "Feeding junk food",
+      "Ignoring exercise",
+      "Letting them roam free"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the average lifespan of a dog?",
+    "options": [
+      "5-8 years",
+      "10-15 years",
+      "15-20 years",
+      "20-25 years"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to groom a dog?",
+    "options": [
+      "Brush regularly",
+      "Only when dirty",
+      "Once a year",
+      "Never groom"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is a common reason for dogs to dig?",
+    "options": [
+      "Boredom",
+      "Hunger",
+      "To find treasure",
+      "To escape"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What sound do dogs make when they're happy?",
+    "options": [
+      "Bark",
+      "Growl",
+      "Whine",
+      "Howl"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to keep a dog safe in the car?",
+    "options": [
+      "Let them roam free",
+      "Use a seatbelt harness",
+      "Open the windows",
+      "Ignore them"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common command taught to dogs?",
+    "options": [
+      "Sit",
+      "Dance",
+      "Sing",
+      "Jump"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to prevent fleas on dogs?",
+    "options": [
+      "Regular baths",
+      "Flea medication",
+      "Ignoring it",
+      "Letting them play outside"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the term for a dog that assists law enforcement?",
+    "options": [
+      "Service dog",
+      "Police dog",
+      "Hunting dog",
+      "Show dog"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What should you do if your dog is acting aggressively?",
+    "options": [
+      "Approach it slowly",
+      "Yell at it",
+      "Avoid it",
+      "Ignore it"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is a common sign of a dog being bored?",
+    "options": [
+      "Sleeping",
+      "Digging",
+      "Barking",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "How can you tell if your dog is happy?",
+    "options": [
+      "Wagging tail",
+      "Barking loudly",
+      "Hiding",
+      "Growling"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to reward a dog?",
+    "options": [
+      "Ignoring it",
+      "Giving treats",
+      "Yelling at it",
+      "Taking away its toys"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a dog's primary sense?",
+    "options": [
+      "Hearing",
+      "Vision",
+      "Smell",
+      "Touch"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is the best way to care for an older dog?",
+    "options": [
+      "Ignore their needs",
+      "Regular vet check-ups",
+      "Feed them junk food",
+      "Let them do whatever they want"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common way to exercise a dog?",
+    "options": [
+      "Walking",
+      "Running",
+      "Playing fetch",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to keep your dog hydrated?",
+    "options": [
+      "Letting them drink from puddles",
+      "Providing fresh water",
+      "Ignoring it",
+      "Only giving food"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep your dog warm in winter?",
+    "options": [
+      "Leave them outside",
+      "Provide a warm bed",
+      "Ignore them",
+      "Only give them food"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to transport a dog?",
+    "options": [
+      "In the trunk",
+      "In a crate",
+      "Letting them roam",
+      "In the back seat without a seatbelt"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign of a dog being sick?",
+    "options": [
+      "Barking",
+      "Hiding",
+      "Eating a lot",
+      "Playing"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "How can you help a dog with anxiety?",
+    "options": [
+      "Ignore it",
+      "Provide a safe space",
+      "Yell at it",
+      "Leave it alone"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep your dog's teeth healthy?",
+    "options": [
+      "Brushing regularly",
+      "Ignoring dental care",
+      "Feeding only dry food",
+      "Only giving treats"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to introduce a dog to water?",
+    "options": [
+      "Throw them in",
+      "Let them explore gradually",
+      "Ignore their fear",
+      "Only let them watch"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign that a dog is excited?",
+    "options": [
+      "Barking",
+      "Tail wagging",
+      "Jumping",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to keep your dog safe during a thunderstorm?",
+    "options": [
+      "Ignore it",
+      "Provide a safe space",
+      "Let them roam outside",
+      "Yell at them"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What should you do if you find a lost dog?",
+    "options": [
+      "Ignore it",
+      "Take it to a vet",
+      "Leave it alone",
+      "Call animal control"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to keep your dog from jumping on people?",
+    "options": [
+      "Ignore it",
+      "Reward calm behavior",
+      "Yell at it",
+      "Encourage jumping"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to clean a dog's ears?",
+    "options": [
+      "Using cotton swabs",
+      "Using a damp cloth",
+      "Ignoring ear care",
+      "Only when they smell"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep your dog from pulling on the leash?",
+    "options": [
+      "Yell at it",
+      "Use a no-pull harness",
+      "Ignore it",
+      "Let it run free"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign of a dog being protective?",
+    "options": [
+      "Barking",
+      "Growling",
+      "Standing tall",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to keep your dog entertained indoors?",
+    "options": [
+      "Toys and games",
+      "Ignoring them",
+      "Only letting them sleep",
+      "Leaving them alone"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to introduce a dog to a new environment?",
+    "options": [
+      "Throw them in",
+      "Let them explore gradually",
+      "Ignore their fear",
+      "Only let them watch"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign of a dog being anxious?",
+    "options": [
+      "Barking",
+      "Panting",
+      "Hiding",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to keep your dog cool in summer?",
+    "options": [
+      "Leave them outside",
+      "Provide shade and water",
+      "Ignore their needs",
+      "Only give them food"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common reason for dogs to chase their tails?",
+    "options": [
+      "Boredom",
+      "Happiness",
+      "Attention-seeking",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to reward a dog for good behavior?",
+    "options": [
+      "Ignoring it",
+      "Giving treats",
+      "Yelling at it",
+      "Taking away its toys"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common reason dogs bark?",
+    "options": [
+      "To communicate",
+      "To sing",
+      "To eat",
+      "To play"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to train a dog not to jump?",
+    "options": [
+      "Ignore it",
+      "Positive reinforcement",
+      "Yelling",
+      "Punishment"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the most popular dog breed in the world?",
+    "options": [
+      "Labrador Retriever",
+      "German Shepherd",
+      "Golden Retriever",
+      "Bulldog"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is a baby dog called?",
+    "options": [
+      "Puppy",
+      "Cub",
+      "Kitten",
+      "Calf"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which dog breed is known for its wrinkled face?",
+    "options": [
+      "Pug",
+      "Bulldog",
+      "Shar Pei",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the average lifespan of a dog?",
+    "options": [
+      "5-8 years",
+      "10-13 years",
+      "15-18 years",
+      "20-25 years"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which dog breed is the smallest in the world?",
+    "options": [
+      "Chihuahua",
+      "Pomeranian",
+      "Yorkshire Terrier",
+      "Shih Tzu"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is a dog's most highly developed sense?",
+    "options": [
+      "Hearing",
+      "Smell",
+      "Taste",
+      "Vision"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which dog breed is known as the 'gentle giant'?",
+    "options": [
+      "Great Dane",
+      "Chihuahua",
+      "Poodle",
+      "Beagle"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to train a dog?",
+    "options": [
+      "Yelling",
+      "Positive reinforcement",
+      "Ignoring bad behavior",
+      "Punishment"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which dog breed is known for its blue-black tongue?",
+    "options": [
+      "Chow Chow",
+      "Dalmatian",
+      "Labrador",
+      "Boxer"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is a group of dogs called?",
+    "options": [
+      "Pack",
+      "Herd",
+      "Flock",
+      "Swarm"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which dog breed is famous for pulling sleds?",
+    "options": [
+      "Husky",
+      "Bulldog",
+      "Poodle",
+      "Beagle"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the most common reason dogs wag their tails?",
+    "options": [
+      "They are angry",
+      "They are happy",
+      "They are scared",
+      "They are hungry"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which dog breed is known for its herding abilities?",
+    "options": [
+      "Border Collie",
+      "Poodle",
+      "Chihuahua",
+      "Bulldog"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to keep a dog cool in hot weather?",
+    "options": [
+      "Leave them outside",
+      "Provide shade and water",
+      "Ignore them",
+      "Only give them food"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which dog breed is known for its role as a police or military dog?",
+    "options": [
+      "German Shepherd",
+      "Poodle",
+      "Beagle",
+      "Bulldog"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to introduce a dog to a new pet?",
+    "options": [
+      "Force them to meet",
+      "Let them sniff each other",
+      "Ignore the introduction",
+      "Only let them see each other from a distance"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the primary purpose of a dog's collar?",
+    "options": [
+      "Fashion",
+      "Identification and control",
+      "Comfort",
+      "None of the above"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Which dog breed is known for its excellent sense of smell?",
+    "options": [
+      "Beagle",
+      "Poodle",
+      "Dachshund",
+      "Chihuahua"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to clean a dog's teeth?",
+    "options": [
+      "Brushing with dog toothpaste",
+      "Using a cloth",
+      "Only giving dental treats",
+      "Ignoring dental care"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is a common sign that a dog is scared?",
+    "options": [
+      "Barking",
+      "Cowering",
+      "Tail wagging",
+      "Growling"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep a dog entertained while at home?",
+    "options": [
+      "Providing toys and puzzles",
+      "Ignoring them",
+      "Only letting them sleep",
+      "Leaving them alone"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Which dog breed is known for its distinctive howl?",
+    "options": [
+      "Beagle",
+      "Husky",
+      "Bulldog",
+      "Poodle"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to transport a dog safely in a vehicle?",
+    "options": [
+      "In the trunk",
+      "In a crate or with a seatbelt harness",
+      "Letting them roam free",
+      "In the back seat without a seatbelt"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign that a dog is feeling anxious?",
+    "options": [
+      "Barking",
+      "Panting",
+      "Hiding",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the average weight of a medium-sized dog?",
+    "options": [
+      "10-20 lbs",
+      "20-50 lbs",
+      "50-80 lbs",
+      "80-100 lbs"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common reason dogs chew on things?",
+    "options": [
+      "Boredom",
+      "Hunger",
+      "To find treasure",
+      "To escape"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to introduce a dog to water?",
+    "options": [
+      "Throw them in",
+      "Let them explore gradually",
+      "Ignore their fear",
+      "Only let them watch"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign of a dog being protective?",
+    "options": [
+      "Barking",
+      "Growling",
+      "Standing tall",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to keep your dog's coat healthy?",
+    "options": [
+      "Regular brushing",
+      "Ignoring grooming",
+      "Only bathing",
+      "Feeding junk food"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to reward a dog for good behavior?",
+    "options": [
+      "Ignoring it",
+      "Giving treats",
+      "Yelling at it",
+      "Taking away its toys"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common reason for dogs to chase their tails?",
+    "options": [
+      "Boredom",
+      "Happiness",
+      "Attention-seeking",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to prevent fleas on dogs?",
+    "options": [
+      "Regular baths",
+      "Flea medication",
+      "Ignoring it",
+      "Letting them play outside"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common command taught to dogs?",
+    "options": [
+      "Sit",
+      "Dance",
+      "Sing",
+      "Jump"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to keep your dog safe during a thunderstorm?",
+    "options": [
+      "Ignore it",
+      "Provide a safe space",
+      "Let them roam outside",
+      "Yell at them"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep your dog from jumping on people?",
+    "options": [
+      "Ignore it",
+      "Reward calm behavior",
+      "Yell at it",
+      "Encourage jumping"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign of a dog being bored?",
+    "options": [
+      "Digging",
+      "Barking",
+      "Chewing furniture",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to care for an older dog?",
+    "options": [
+      "Ignore their needs",
+      "Regular vet check-ups",
+      "Feed them junk food",
+      "Let them do whatever they want"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the average heart rate of a dog?",
+    "options": [
+      "60-100 bpm",
+      "100-140 bpm",
+      "140-180 bpm",
+      "180-220 bpm"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep your dog hydrated?",
+    "options": [
+      "Letting them drink from puddles",
+      "Providing fresh water",
+      "Ignoring it",
+      "Only giving food"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign that a dog is excited?",
+    "options": [
+      "Barking",
+      "Tail wagging",
+      "Jumping",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is the best way to prevent separation anxiety in dogs?",
+    "options": [
+      "Ignoring it",
+      "Gradual desensitization",
+      "Yelling at them",
+      "Leaving them alone for long periods"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to train a dog not to bark?",
+    "options": [
+      "Ignoring it",
+      "Positive reinforcement",
+      "Yelling",
+      "Punishment"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to introduce a dog to a new environment?",
+    "options": [
+      "Throw them in",
+      "Let them explore gradually",
+      "Ignore their fear",
+      "Only let them watch"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common reason for dogs to dig?",
+    "options": [
+      "Boredom",
+      "Hunger",
+      "To find treasure",
+      "To escape"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the best way to keep your dog warm in winter?",
+    "options": [
+      "Leave them outside",
+      "Provide a warm bed",
+      "Ignore them",
+      "Only give them food"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to clean a dog's ears?",
+    "options": [
+      "Using cotton swabs",
+      "Using a damp cloth",
+      "Ignoring ear care",
+      "Only when they smell"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is a common sign of a dog being sick?",
+    "options": [
+      "Barking",
+      "Hiding",
+      "Eating a lot",
+      "Playing"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to help a dog with anxiety?",
+    "options": [
+      "Ignore it",
+      "Provide a safe space",
+      "Yell at it",
+      "Leave it alone"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the average number of puppies in a litter?",
+    "options": [
+      "1-3",
+      "4-6",
+      "7-9",
+      "10-12"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to exercise a dog?",
+    "options": [
+      "Walking",
+      "Running",
+      "Playing fetch",
+      "All of the above"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "question": "What is a common sign that a dog is hungry?",
+    "options": [
+      "Barking",
+      "Pawing at their food bowl",
+      "Growling",
+      "Sleeping"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to introduce a dog to new people?",
+    "options": [
+      "Force them to meet",
+      "Let them approach slowly",
+      "Ignore the dog",
+      "Only let them meet family"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "question": "What is the best way to keep your dog safe from parasites?",
+    "options": [
+      "Regular vet check-ups and medication",
+      "Ignoring it",
+      "Only bathing them",
+      "Letting them play outside"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "question": "What is the average number of teeth in an adult dog?",
+    "options": [
+      "28",
+      "32",
+      "42",
+      "50"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "question": "What is a common sign of a dog being playful?",
+    "options": [
+      "Barking",
+      "Play bowing",
+      "Chasing their tail",
+      "All of the above"
+    ],
+    "correctAnswer": 3
   }
 ]
