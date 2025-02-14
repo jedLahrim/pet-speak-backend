@@ -205,9 +205,9 @@ export class PetService {
     const { petType } = dto;
     switch (petType) {
       case PetType.CAT:
-        return this.getRandomItems(catQuiz, 5);
+        return this.getRandomItems(catQuiz, 10);
       case PetType.DOG:
-        return this.getRandomItems(dogQuiz, 5);
+        return this.getRandomItems(dogQuiz, 10);
     }
   }
 
