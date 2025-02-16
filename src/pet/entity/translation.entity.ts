@@ -9,7 +9,7 @@ export class Translation {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'text' })
   text: string;
 
   @Column({ type: 'varchar', nullable: true })
