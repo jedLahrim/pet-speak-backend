@@ -222,13 +222,14 @@ export class PetService {
     return shuffled?.slice(0, count);
   };
 
-  private async _callAi(prompt: string, isPetExpert = false) {
+  private async _callAi(prompt: string, isPetExpert = null) {
     const options = {
       method: 'POST',
       url: Constant.OPEN_AI_URL,
       headers: Constant.OPEN_AI_HEADERS,
       data: {
         text: prompt,
+        isPetExpert: isPetExpert,
       },
     };
 
