@@ -21,6 +21,7 @@ import dogQuiz from './assets/json/dog-quiz.json';
 import catReel from './assets/json/cat-reel.json';
 import dogReel from './assets/json/dog-reel.json';
 import { Question } from './entity/questions.entity';
+import { Reel } from './entity/reels.entity';
 
 @Injectable()
 export class PetService {
@@ -217,9 +218,9 @@ export class PetService {
     const { petType } = dto;
     switch (petType) {
       case PetType.CAT:
-        return this.getRandomItems<any>(catReel, 10);
+        return this.getRandomItems<Reel>(catReel, 10);
       case PetType.DOG:
-        return this.getRandomItems<any>(dogReel, 10);
+        return this.getRandomItems<Reel>(dogReel, 10);
     }
   }
 
