@@ -205,22 +205,30 @@ export class PetService {
     const { petType } = dto;
     switch (petType) {
       case PetType.CAT:
-        return this.getRandomItems(catQuiz, 10);
+        return this.getRandomItems<Question>(catQuiz, 10);
       case PetType.DOG:
-        return this.getRandomItems(dogQuiz, 10);
+        return this.getRandomItems<Question>(dogQuiz, 10);
     }
   }
 
-  getRandomItems(array: Array<Question>, count: number) {
-    array = array?.map(value => {
-      return {
+getRandomItems<T>(array: Array<T>, count: number): Array<T & { id: string }> {
+    if (!array || array.length === 0) return [];
+
+    // Map to add unique IDs
+    const mappedArray = array.map(value => ({
         id: crypto.randomUUID(),
         ...value,
-      };
-    });
-    const shuffled = array?.sort(() => 0.5 - Math.random());
-    return shuffled?.slice(0, count);
-  };
+    }));
+
+    // Fisher-Yates shuffle
+    for (let i = mappedArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [mappedArray[i], mappedArray[j]] = [mappedArray[j], mappedArray[i]];
+    }
+
+    // Return the specified count of random items
+    return mappedArray.slice(0, count);
+}
 
   private async _callAi(prompt: string, isPetExpert = null) {
     const options = {
