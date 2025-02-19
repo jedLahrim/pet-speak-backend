@@ -228,7 +228,6 @@ export class PetService {
       url: Constant.OPEN_AI_URL,
       headers: Constant.OPEN_AI_HEADERS,
       timeout: 100000, // 100 seconds
-      retry: 3,
       data: {
         text: prompt,
         isPetExpert: isPetExpert,
