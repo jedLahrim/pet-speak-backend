@@ -218,9 +218,9 @@ export class PetService {
     const { petType } = dto;
     switch (petType) {
       case PetType.CAT:
-        return this.getRandomItems<Reel>(catReel, 10);
+        return this.getRandomItems<Reel>(catReel as Reel[], 10);
       case PetType.DOG:
-        return this.getRandomItems<Reel>(dogReel, 10);
+        return this.getRandomItems<Reel>(dogReel as Reel[], 10);
     }
   }
 
