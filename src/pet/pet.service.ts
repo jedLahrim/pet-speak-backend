@@ -218,9 +218,9 @@ export class PetService {
     const { petType } = dto;
     switch (petType) {
       case PetType.CAT:
-        return this.getRandomItems<Reel>(catReel as Reel[], 10);
+        return this.getRandomItems<any>(catReel, 10);
       case PetType.DOG:
-        return this.getRandomItems<Reel>(dogReel as Reel[], 10);
+        return this.getRandomItems<any>(dogReel, 10);
     }
   }
 
@@ -248,7 +248,6 @@ getRandomItems<T>(array: Array<T>, count: number): Array<T & { id: string }> {
       method: 'POST',
       url: Constant.OPEN_AI_URL,
       headers: Constant.OPEN_AI_HEADERS,
-      timeout: 100000, // 100 seconds
       data: {
         text: prompt,
         isPetExpert: isPetExpert,
