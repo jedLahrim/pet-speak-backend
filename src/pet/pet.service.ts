@@ -18,8 +18,6 @@ import { ChatDto } from './chat.dto';
 import { PetType } from './enums/pet-type.enum';
 import catQuiz from './assets/json/cat-quiz.json';
 import dogQuiz from './assets/json/dog-quiz.json';
-import catReel from './assets/json/cat-reel.json';
-import dogReel from './assets/json/dog-reel.json';
 import { Question } from './entity/questions.entity';
 import { Reel } from './entity/reels.entity';
 
@@ -211,16 +209,6 @@ export class PetService {
         return this.getRandomItems<Question>(catQuiz, 10);
       case PetType.DOG:
         return this.getRandomItems<Question>(dogQuiz, 10);
-    }
-  }
-
-    getReel(dto: { petType: PetType }) {
-    const { petType } = dto;
-    switch (petType) {
-      case PetType.CAT:
-        return this.getRandomItems<any>(catReel, 10);
-      case PetType.DOG:
-        return this.getRandomItems<any>(dogReel, 10);
     }
   }
 
