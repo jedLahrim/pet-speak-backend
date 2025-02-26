@@ -133,10 +133,4 @@ export class PetController {
   getQuiz(@Body() dto: { petType: PetType }) {
     return this.petService.getQuiz(dto);
   }
-
-  @Post('generate/reel')
-  @UseGuards(JwtAuthGuard)
-  getReel(@Body() dto: { petType: PetType }) {
-    return this.petService.getReel(dto);
-  }
 }
