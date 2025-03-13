@@ -128,7 +128,7 @@ export class PetController {
     return this.petService.chat(dto);
   }
 
-  @Post('/transcribe')
+  @Post('generate/transcribe')
   @UseInterceptors(FileInterceptor('audio_file'))
   async transcribeAudio(@UploadedFile() audioFile: Express.Multer.File) {
        return this.petService.transcribeAudio(audioFile);
