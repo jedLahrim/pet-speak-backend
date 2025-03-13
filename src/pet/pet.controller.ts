@@ -128,6 +128,12 @@ export class PetController {
     return this.petService.chat(dto);
   }
 
+  @Post()
+  @UseInterceptors(FileInterceptor('audio_file'))
+  async transcribeAudio(@UploadedFile() audioFile: Express.Multer.File) {
+       return this.petService.transcribeAudio(audioFile);
+  }
+
   @Post('generate/quiz')
   @UseGuards(JwtAuthGuard)
   getQuiz(@Body() dto: { petType: PetType }) {
