@@ -148,44 +148,37 @@ export class PetService {
     });
   }
 
-  async transcribeAudio(audioFile: Express.Multer.File) {
- try {
-      if (!audioFile) {
-        throw new BadRequestException('No file uploaded');
-      }
-
-      // Save the uploaded file temporarily
-      const tempFilePath = path.join(os.tmpdir(), audioFile.originalname);
-      fs.writeFileSync(tempFilePath, audioFile.buffer);
-
-      // Read the audio file and encode it in base64
-      const audioData = fs.readFileSync(tempFilePath);
-      const encodedAudio = base64.fromByteArray(audioData);
-
-      // Hugging Face API endpoint and headers
-      const apiUrl = 'https://router.huggingface.co/hf-inference/models/openai/whisper-large-v3-turbo';
-      const hfToken = process.env.HUGGING_FACE_TOKEN;
-
-      const response = await axios.post(apiUrl, {
-        inputs: encodedAudio,
-      }, {
-        headers: {
-          Authorization: `Bearer ${hfToken}`,
-          'Content-Type': 'application/json', // Use application/json for base64 encoded data
-        },
-      });
-
-      // Extract the transcribed text from the response
-      const transcribedText = response.data.text || '';
-
-      // Clean up the temporary file
-      fs.unlinkSync(tempFilePath);
-
-      return { transcribed_text: transcribedText };
-    } catch (error) {
-      throw new InternalServerErrorException(`An error occurred: ${error.message}`);
+async transcribeAudio(audioFile: Express.Multer.File) {
+  try {
+    if (!audioFile) {
+      throw new BadRequestException('No file uploaded');
     }
+
+    // Use the buffer directly
+    const audioData = audioFile.buffer;
+    const encodedAudio = base64.fromByteArray(audioData);
+
+    // Hugging Face API endpoint and headers
+    const apiUrl = 'https://router.huggingface.co/hf-inference/models/openai/whisper-large-v3-turbo';
+    const hfToken = process.env.HUGGING_FACE_TOKEN;
+
+    const response = await axios.post(apiUrl, {
+      inputs: encodedAudio,
+    }, {
+      headers: {
+        Authorization: `Bearer ${hfToken}`,
+        'Content-Type': 'application/json', // Use application/json for base64 encoded data
+      },
+    });
+
+    // Extract the transcribed text from the response
+    const transcribedText = response.data.text || '';
+
+    return { transcribed_text: transcribedText };
+  } catch (error) {
+    throw new InternalServerErrorException(`An error occurred: ${error.message}`);
   }
+}
 
   async getRefinedText(
     originalText: string,
