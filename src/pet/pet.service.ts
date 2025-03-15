@@ -154,7 +154,7 @@ async transcribeAudio(audioFile: Express.Multer.File) {
     if (!audioFile) {
       throw new BadRequestException('No file uploaded');
     }
-
+      const formData = new FormData();
     // Use the buffer directly
       const buffer = audioFile.buffer;
       formData.append('file', buffer, fileName);
