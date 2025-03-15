@@ -157,6 +157,7 @@ async transcribeAudio(audioFile: Express.Multer.File) {
       const formData = new FormData();
     // Use the buffer directly
       const buffer = audioFile.buffer;
+      const fileName = audioFile.originalname;
       formData.append('file', buffer, fileName);
       formData.append('model', 'whisper-1');
       formData.append('language', 'en');
