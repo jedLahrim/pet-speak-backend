@@ -25,7 +25,7 @@ import { Question } from './entity/questions.entity';
 import { Reel } from './entity/reels.entity';
 import * as os from 'os';
 import * as base64 from 'base64-js';
-import * as FormData from 'form-data';
+import FormData from 'form-data';
 
 @Injectable()
 export class PetService {
