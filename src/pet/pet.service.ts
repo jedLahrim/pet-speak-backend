@@ -159,8 +159,8 @@ async transcribeAudio(audioFile: Express.Multer.File) {
       const buffer = audioFile.buffer;
       const fileName = audioFile.originalname;
       formData.append('file', buffer, fileName);
-      formData.append('model', 'whisper-1');
-      formData.append('language', 'en');
+      formData.append('model', 'whisper-3-turbo');
+      // formData.append('language', 'en');
 
       const response = await axios.post(
         `${process.env.OPENAI_BASE_URL}/audio/transcriptions`,
