@@ -159,7 +159,7 @@ async transcribeAudio(audioFile: Express.Multer.File) {
     const encodedAudio = base64.fromByteArray(audioData);
 
     // Hugging Face API endpoint and headers
-    const apiUrl = 'https://router.huggingface.co/hf-inference/models/openai/whisper-large-v3-turbo';
+    const apiUrl = 'https://api-inference.huggingface.co/models/openai/whisper-large-v3-turbo';
     const hfToken = process.env.HUGGING_FACE_TOKEN;
 
     const response = await axios.post(apiUrl, {
