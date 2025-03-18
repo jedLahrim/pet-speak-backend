@@ -176,7 +176,7 @@ async transcribeAudio(audioFile: Express.Multer.File) {
 
     return { transcribed_text: transcribedText };
   } catch (error) {
-    throw new InternalServerErrorException(`An error occurred: ${error.message}`);
+    throw new InternalServerErrorException({error});
   }
 }
 
