@@ -25,7 +25,6 @@ import { Question } from './entity/questions.entity';
 import { Reel } from './entity/reels.entity';
 import * as os from 'os';
 import * as base64 from 'base64-js';
-import FormData from 'form-data';
 
 @Injectable()
 export class PetService {
@@ -154,25 +153,28 @@ async transcribeAudio(audioFile: Express.Multer.File) {
     if (!audioFile) {
       throw new BadRequestException('No file uploaded');
     }
-      const formData = new FormData();
-    // Use the buffer directly
-      const buffer = audioFile.buffer;
-      const fileName = audioFile.originalname;
-      formData.append('file', buffer, fileName);
-      formData.append('model', 'whisper-1');
-      // formData.append('language', 'en');
 
-      const response = await axios.post(
-        `${process.env.OPENAI_BASE_URL}/audio/transcriptions`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.OPENAI_TRANSCRIPTION_API_KEY}`,
-            'Content-Type': 'multipart/form-data',
-          },
-        },
-      );
-    return { transcribed_text: response.data.text };
+    // Use the buffer directly
+    const audioData = audioFile.buffer;
+    const encodedAudio = base64.fromByteArray(audioData);
+
+    // Hugging Face API endpoint and headers
+    const apiUrl = 'https://router.huggingface.co/hf-inference/models/openai/whisper-large-v3-turbo';
+    const hfToken = process.env.HUGGING_FACE_TOKEN;
+
+    const response = await axios.post(apiUrl, {
+      inputs: encodedAudio,
+    }, {
+      headers: {
+        Authorization: `Bearer ${hfToken}`,
+        'Content-Type': 'application/json', // Use application/json for base64 encoded data
+      },
+    });
+
+    // Extract the transcribed text from the response
+    const transcribedText = response.data.text || '';
+
+    return { transcribed_text: transcribedText };
   } catch (error) {
     throw new InternalServerErrorException(`An error occurred: ${error.message}`);
   }
