@@ -4,7 +4,7 @@ export class Constant {
     'https://router.huggingface.co/fireworks-ai/inference/v1/chat/completions';
   static OPEN_AI_HEADERS = {
     'Content-Type': 'application/json',
-    'Authorization': process.env.HUGGING_FACE_TOKEN,
+    'Authorization': `Bearer ${process.env.HUGGING_FACE_TOKEN}`,
   };
 
   static readonly usernames = ['pets','Pet','jiffpom', 'nala_cat', 'realgrumpycat', 
