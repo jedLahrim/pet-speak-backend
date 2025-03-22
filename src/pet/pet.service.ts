@@ -274,8 +274,18 @@ getRandomItems<T>(array: Array<T>, count: number): Array<T & { id: string }> {
       url: Constant.OPEN_AI_URL,
       headers: Constant.OPEN_AI_HEADERS,
       data: {
-        text: prompt,
-        isPetExpert: isPetExpert,
+    messages: [
+        {
+            "role": "system",
+            "content": "You are 'Vet 2' a pet expert with a PhD in veterinary medicine."
+        },
+        {
+            "role": "user",
+            "content": `${prompt}`
+        }
+    ],
+    stream: false,
+    model: "accounts/fireworks/models/llama-v3p3-70b-instruct"
       },
     };
 
