@@ -188,7 +188,7 @@ async transcribeAudio(audioFile: Express.Multer.File) {
       const prompt = `Please Generates a 300 characters text rewriting the following text with a clear and concise explanation in the same language code ${languageCode}. Ensure the generated text is not less than 300 characters. Do not exceed or fall short of this range. 
               Here is the text: ${originalText}`;
       const data = await this._callAi(prompt);
-      return data?.choices?[0].message?.content;
+      return data?.choices[0].message?.content;
     } catch (e) {
       console.log(e);
     }
@@ -236,7 +236,7 @@ async transcribeAudio(audioFile: Express.Multer.File) {
   async chat(dto: ChatDto): Promise<{ message: string }> {
     const { text } = dto;
     const data = await this._callAi(text, true);
-    return { message: data?.choices?[0].message?.content };
+    return { message: data?.choices[0].message?.content };
   }
 
   getQuiz(dto: { petType: PetType }) {
