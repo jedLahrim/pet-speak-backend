@@ -1,8 +1,10 @@
+
 export class Constant {
   static OPEN_AI_URL =
-    'https://free-chat-gpt-umber.vercel.app/api/chat';
+    'https://router.huggingface.co/fireworks-ai/inference/v1/chat/completions';
   static OPEN_AI_HEADERS = {
     'Content-Type': 'application/json',
+    'Authorization': process.env.HUGGING_FACE_TOKEN,
   };
 
   static readonly usernames = ['pets','Pet','jiffpom', 'nala_cat', 'realgrumpycat', 
