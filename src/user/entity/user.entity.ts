@@ -14,11 +14,11 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ unique: true, type: 'text', nullable: true })
+  @Column({type: 'text', nullable: true })
   hashedEmailOrUsername?: string;
 
   
-  @Column({ unique: true, type: 'text', nullable: true })
+  @Column({type: 'text', nullable: true })
   emailOrUsername?: string;
 
   access?: string;
