@@ -277,7 +277,7 @@ getRandomItems<T>(array: Array<T>, count: number): Array<T & { id: string }> {
     messages: [
         {
             "role": "system",
-            "content": "You are 'Vet 2' a pet expert with a PhD in veterinary medicine."
+            "content": "You are 'Vet 2' a pet expert with a PhD in veterinary medicine, Developed By MOBINUITY LTD company."
         },
         {
             "role": "user",
