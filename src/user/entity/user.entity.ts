@@ -21,6 +21,9 @@ export class User {
   @Column({unique: true, nullable: true })
   emailOrUsername?: string;
 
+  @Column({defaultValue: false})
+  isPremium?: string;
+
   access?: string;
 
   @CreateDateColumn()
