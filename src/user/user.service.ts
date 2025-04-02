@@ -73,7 +73,7 @@ export class UserService {
   }
 
   async update(createUserDto: CreateUserDto, user: User) {
-    const { emailOrUsername } = createUserDto;
+    const { emailOrUsername, isPremium } = createUserDto;
 
     const value = `${process.env.ENCRYPTION_PHRASE}${emailOrUsername}`;
     const crypted = x2(value);
@@ -95,6 +95,7 @@ export class UserService {
       await this.userRepository.update(user?.id, {
         emailOrUsername,
         hashedEmailOrUsername: crypted,
+        isPremium: isPremium,
       });
       return await this.userRepository.findOne({
         where: { id: user?.id },
