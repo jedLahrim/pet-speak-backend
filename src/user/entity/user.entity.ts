@@ -21,7 +21,7 @@ export class User {
   @Column({unique: true, nullable: true })
   emailOrUsername?: string;
 
-  @Column({defaultValue: false})
+  @Column({default: false})
   isPremium?: string;
 
   access?: string;
