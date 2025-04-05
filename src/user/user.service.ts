@@ -84,9 +84,9 @@ export class UserService {
       where: { hashedEmailOrUsername: crypted },
     });
 
-    if (foundedEmailOrUsername) {
-      throw new BadRequestException('This Email or username already exists');
-    }
+    // if (foundedEmailOrUsername) {
+    //   throw new BadRequestException('This Email or username already exists');
+    // }
     const foundedUser = await this.userRepository.findOne({
       where: { id: user?.id },
     });
