@@ -25,11 +25,6 @@ jobs:
             # Update package lists
             apt-get update &&
 
-            # Install Git if not installed
-            if ! command -v git &> /dev/null; then
-              apt-get install -y git
-            fi &&
-
             # Install Node.js and npm if not installed
             if ! command -v node &> /dev/null; then
               curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&
@@ -42,11 +37,6 @@ jobs:
             # Navigate to project directory
             cd /root &&
 
-            # Check if the project directory exists
-            if [ ! -d ".git" ]; then
-              # Clone the repository if it doesn't exist
-              git clone https://github.com/jedLahrim/pet-speak-backend.git . 
-            fi &&
 
             # Pull latest changes
             git pull origin master &&
