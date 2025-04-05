@@ -285,7 +285,7 @@ getRandomItems<T>(array: Array<T>, count: number): Array<T & { id: string }> {
         }
     ],
     stream: false,
-    model: "accounts/fireworks/models/DeepSeek-V3"
+    model: "accounts/fireworks/models/deepseek-v3"
       },
     };
 
