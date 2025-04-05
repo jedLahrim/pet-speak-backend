@@ -20,13 +20,14 @@ jobs:
           SERVER_IP: ${{ secrets.SERVER_IP }}
           SERVER_USER: ${{ secrets.SERVER_USER }}
           SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
-          GIT_REPO: ${{ github.repositoryUrl }}
+          GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
+          GIT_PASSWORD: ${{ secrets.GIT_PASSWORD }}
         run: |
           sshpass -p "$SERVER_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "
             # Update package lists
             apt-get update -y &&
 
-            # Install Node.js and npm if not installed
+            # Install Node.js, npm and git if not installed
             if ! command -v node &> /dev/null; then
               curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&
               apt-get install -y nodejs git
@@ -40,12 +41,12 @@ jobs:
             cd /var/www &&
 
             # Clone repository if it doesn't exist
-            if [ ! -d pet-speak ]; then
-              git clone $GIT_REPO pet-speak &&
-              cd pet-speak
+            if [ ! -d pet-speak-backend ]; then
+              git clone https://$GIT_USERNAME:$GIT_PASSWORD@github.com/${GITHUB_REPOSITORY}.git pet-speak-backend &&
+              cd pet-speak-backend
             else
-              cd pet-speak &&
-              git pull origin master
+              cd pet-speak-backend &&
+              git pull https://$GIT_USERNAME:$GIT_PASSWORD@github.com/${GITHUB_REPOSITORY}.git master
             fi &&
 
             # Install dependencies
@@ -58,5 +59,5 @@ jobs:
             ls -la dist &&
 
             # Restart the application
-            pm2 restart pet-speak || pm2 start dist/main.js --name pet-speak --watch
+            pm2 restart pet-speak-backend || pm2 start dist/main.js --name pet-speak-backend --watch
           "
