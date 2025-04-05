@@ -26,29 +26,6 @@ jobs:
           sshpass -p "$SERVER_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "
             # Update package lists
             apt-get update -y &&
-          
-            # Install and configure Nginx
-            if ! command -v nginx &> /dev/null; then
-            apt-get install -y nginx
-            rm /etc/nginx/sites-enabled/default
-            cat > /etc/nginx/sites-available/pet-speak-backend << 'EOL'
-            server {
-            listen 80;
-            server_name $SERVER_IP;
-          
-            location / {
-            proxy_pass http://localhost:3000;
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade \$http_upgrade;
-            proxy_set_header Connection 'upgrade';
-            proxy_set_header Host \$host;
-            proxy_cache_bypass \$http_upgrade;
-            }
-          }
-            EOL
-            ln -s /etc/nginx/sites-available/pet-speak-backend /etc/nginx/sites-enabled/
-            systemctl restart nginx
-            fi
 
             # Install Node.js 20.x and npm if not installed
             if ! command -v node &> /dev/null; then
