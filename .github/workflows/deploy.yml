@@ -57,6 +57,6 @@ jobs:
 
             # Restart the application
             pm2 delete pet-speak-backend
-            pm2 start /root/pet-speak-backend/dist/main.js --name pet-speak-backend --watch
+            pm2 start /root/pet-speak-backend/dist/main.js --name pet-speak-backend --watch -- --port 80
             pm2 save
           "
