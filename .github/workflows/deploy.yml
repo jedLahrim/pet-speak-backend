@@ -33,58 +33,20 @@ jobs:
               apt-get install -y nodejs git
             fi &&
 
-            # Install Nginx and Certbot for SSL
-            apt-get install -y nginx certbot python3-certbot-nginx &&
-
-            # Configure Nginx for HTTP and HTTPS
-            cat > /etc/nginx/sites-available/pet-speak-backend << 'EOF'
-            server {
-                listen 80;
-                server_name pet-speak-backend.com www.pet-speak-backend.com;
-
-                # Redirect all HTTP requests to HTTPS
-                return 301 https://\$host\$request_uri;
-            }
-
-            server {
-                listen 443 ssl;
-                server_name pet-speak-backend.com www.pet-speak-backend.com;
-
-                ssl_certificate /etc/letsencrypt/live/pet-speak-backend.com/fullchain.pem;
-                ssl_certificate_key /etc/letsencrypt/live/pet-speak-backend.com/privkey.pem;
-
-                location / {
-                    proxy_pass http://localhost:3000;
-                    proxy_http_version 1.1;
-                    proxy_set_header Upgrade \$http_upgrade;
-                    proxy_set_header Connection 'upgrade';
-                    proxy_set_header Host \$host;
-                    proxy_cache_bypass \$http_upgrade;
-                }
-            }
-            EOF
-
-            # Enable the Nginx configuration
-            ln -s /etc/nginx/sites-available/pet-speak-backend /etc/nginx/sites-enabled/ &&
-            nginx -t &&
-
-            # Restart Nginx
-            systemctl restart nginx &&
-
-            # Obtain SSL certificate from Let's Encrypt
-            certbot --nginx -d pet-speak-backend.com -d www.pet-speak-backend.com --non-interactive --agree-tos --email your-email@example.com &&
+            # Install global dependencies
+            npm install -g pm2 &&
 
             # Navigate to project directory
-            PROJECT_DIR=/root/pet-speak-backend
             mkdir -p /root &&
+            cd /root &&
 
             # Clone repository if it doesn't exist
-            if [ ! -d \$PROJECT_DIR ]; then
-              git clone https://\$GIT_USERNAME:\$GIT_PASSWORD@github.com/${GITHUB_REPOSITORY}.git \$PROJECT_DIR &&
-              cd \$PROJECT_DIR
+            if [ ! -d pet-speak-backend ]; then
+              git clone https://$GIT_USERNAME:$GIT_PASSWORD@github.com/${GITHUB_REPOSITORY}.git pet-speak-backend &&
+              cd pet-speak-backend
             else
-              cd \$PROJECT_DIR &&
-              git pull https://\$GIT_USERNAME:\$GIT_PASSWORD@github.com/${GITHUB_REPOSITORY}.git master
+              cd pet-speak-backend &&
+              git pull https://$GIT_USERNAME:$GIT_PASSWORD@github.com/${GITHUB_REPOSITORY}.git master
             fi &&
 
             # Install dependencies
@@ -93,8 +55,8 @@ jobs:
             # Build the NestJS app
             npm run build || { echo 'Build failed'; exit 1; } &&
 
-            # Restart the application with PM2
-            pm2 delete pet-speak-backend || true
-            pm2 start \$PROJECT_DIR/dist/main.js --name pet-speak-backend --watch
+            # Restart the application
+            pm2 delete pet-speak-backend
+            pm2 start /root/pet-speak-backend/dist/main.js --name pet-speak-backend --watch
             pm2 save
           "
