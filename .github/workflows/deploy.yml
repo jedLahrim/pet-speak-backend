@@ -37,8 +37,8 @@ jobs:
             npm install -g pm2 &&
 
             # Navigate to project directory
-            mkdir -p /var/www &&
-            cd /var/www &&
+            mkdir -p /root &&
+            cd /root &&
 
             # Clone repository if it doesn't exist
             if [ ! -d pet-speak-backend ]; then
