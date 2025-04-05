@@ -49,8 +49,11 @@ jobs:
             npm install &&
 
             # Build the NestJS app
-            npm run build &&
+            npm run build || { echo 'Build failed'; exit 1; } &&
+          
+            # List contents of the dist directory for verification
+            ls -la dist &&
 
             # Restart the application
-            pm2 restart pet-speak || pm2 start dist/main.js --name pet-speak
+            pm2 restart pet-speak || pm2 start dist/main.js --name pet-speak --watch
           "
