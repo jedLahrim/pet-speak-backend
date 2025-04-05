@@ -27,9 +27,9 @@ jobs:
             # Update package lists
             apt-get update -y &&
 
-            # Install Node.js, npm and git if not installed
+            # Install Node.js 20.x and npm if not installed
             if ! command -v node &> /dev/null; then
-              curl -fsSL https://deb.nodesource.com/setup_18.x | bash - &&
+              curl -fsSL https://deb.nodesource.com/setup_20.x | bash - &&
               apt-get install -y nodejs git
             fi &&
 
@@ -55,9 +55,7 @@ jobs:
             # Build the NestJS app
             npm run build || { echo 'Build failed'; exit 1; } &&
 
-            # List contents of the dist directory for verification
-            ls -la dist &&
-
             # Restart the application
-            pm2 restart pet-speak-backend || pm2 start dist/main.js --name pet-speak-backend --watch
+            pm2 restart pet-speak-backend || pm2 start dist/main.js --name pet-speak-backend --watch &&
+            pm2 save
           "
