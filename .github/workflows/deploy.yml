@@ -42,6 +42,12 @@ jobs:
             # Navigate to project directory
             cd /root &&
 
+            # Check if the project directory exists
+            if [ ! -d ".git" ]; then
+              # Clone the repository if it doesn't exist
+              git clone https://github.com/jedLahrim/pet-speak-backend.git . 
+            fi &&
+
             # Pull latest changes
             git pull origin master &&
 
@@ -50,7 +56,7 @@ jobs:
 
             # Build the NestJS app
             npm run build || { echo 'Build failed'; exit 1; } &&
-          
+
             # List contents of the dist directory for verification
             ls -la dist &&
 
