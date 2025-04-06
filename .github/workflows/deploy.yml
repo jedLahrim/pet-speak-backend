@@ -1,4 +1,4 @@
-name: Deploy to Contabo
+name: Deploy NestJS to Contabo
 
 on:
   push:
@@ -25,38 +25,65 @@ jobs:
         run: |
           sshpass -p "$SERVER_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "
             # Update package lists
-            apt-get update -y &&
+            apt-get update -y
 
-            # Install Node.js 20.x and npm if not installed
+            # Install Node.js 20.x if not installed
             if ! command -v node &> /dev/null; then
               curl -fsSL https://deb.nodesource.com/setup_20.x | bash - &&
               apt-get install -y nodejs git
-            fi &&
+            fi
 
-            # Install global dependencies
-            npm install -g pm2 &&
+            # Install PM2 if not installed
+            if ! command -v pm2 &> /dev/null; then
+              npm install -g pm2
+            fi
 
             # Navigate to project directory
-            mkdir -p /root &&
-            cd /root &&
+            mkdir -p /root
+            cd /root
 
-            # Clone repository if it doesn't exist
+            # Clone or update repository
             if [ ! -d pet-speak-backend ]; then
-              git clone https://$GIT_USERNAME:$GIT_PASSWORD@github.com/${GITHUB_REPOSITORY}.git pet-speak-backend &&
+              git clone https://$GIT_USERNAME:$GIT_PASSWORD@github.com/${GITHUB_REPOSITORY}.git pet-speak-backend
               cd pet-speak-backend
             else
-              cd pet-speak-backend &&
+              cd pet-speak-backend
               git pull https://$GIT_USERNAME:$GIT_PASSWORD@github.com/${GITHUB_REPOSITORY}.git master
-            fi &&
+            fi
 
-            # Install dependencies
-            npm install &&
+            # Install dependencies and build
+            npm install
+            npm run build
 
-            # Build the NestJS app
-            npm run build || { echo 'Build failed'; exit 1; } &&
-
-            # Restart the application
+            # Restart NestJS on port 3000 (will be proxied through Nginx)
             pm2 delete pet-speak-backend || true
-            pm2 start /root/pet-speak-backend/dist/main.js --name pet-speak-backend --watch -- --port 80
+            pm2 start /root/pet-speak-backend/dist/main.js --name pet-speak-backend --watch -- --port 3000
             pm2 save
+
+            # Configure Nginx for NestJS (primary route)
+            echo 'server {
+                listen 80;
+                server_name _;
+
+                location /api/nest {
+                    proxy_pass http://127.0.0.1:3000;
+                    proxy_set_header Host \$host;
+                    proxy_set_header X-Real-IP \$remote_addr;
+                    proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+                    proxy_set_header X-Forwarded-Proto \$scheme;
+                }
+
+                location / {
+                    proxy_pass http://127.0.0.1:3000;
+                    proxy_set_header Host \$host;
+                    proxy_set_header X-Real-IP \$remote_addr;
+                    proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+                    proxy_set_header X-Forwarded-Proto \$scheme;
+                }
+            }' > /etc/nginx/sites-available/pet-speak
+
+            # Enable Nginx config
+            ln -sf /etc/nginx/sites-available/pet-speak /etc/nginx/sites-enabled/
+            rm -f /etc/nginx/sites-enabled/default
+            systemctl restart nginx
           "
