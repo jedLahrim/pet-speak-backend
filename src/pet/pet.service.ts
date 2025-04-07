@@ -285,7 +285,7 @@ getRandomItems<T>(array: Array<T>, count: number): Array<T & { id: string }> {
         }
     ],
     stream: false,
-    model: "Meta-Llama-3.3-70B-Instruct"
+    model: "meta-llama/llama-4-scout-17b-16e-instruct"
       },
     };
 
