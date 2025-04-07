@@ -1,7 +1,7 @@
 
 export class Constant {
   static OPEN_AI_URL =
-    'https://router.huggingface.co/sambanova/v1/chat/completions';
+    'https://router.huggingface.co/novita/v3/openai/chat/completions';
   static OPEN_AI_HEADERS = {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${process.env.HUGGING_FACE_TOKEN}`,
