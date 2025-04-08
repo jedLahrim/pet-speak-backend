@@ -185,8 +185,8 @@ async transcribeAudio(audioFile: Express.Multer.File) {
     languageCode: string,
   ): Promise<string> {
     try {
-      const prompt = `Please Generates a text explaining the following text with a clear and concise explanation in the same language code ${languageCode}. Ensure the generated text is detailed. Do not exceed or fall short of this range. 
-              Here is the text: ${originalText}`;
+      const prompt = `In the same language code ${languageCode}. 
+              Explain this: ${originalText}`;
       const data = await this._callAi(prompt);
       return data?.choices[0].message?.content;
     } catch (e) {
