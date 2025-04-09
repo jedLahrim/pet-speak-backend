@@ -1,7 +1,9 @@
-import { Injectable, NotFoundException, 
-        InternalServerErrorException, 
-        BadRequestException 
-       } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Pet } from './entity/pet.entity';
@@ -22,8 +24,6 @@ import { PetType } from './enums/pet-type.enum';
 import catQuiz from './assets/json/cat-quiz.json';
 import dogQuiz from './assets/json/dog-quiz.json';
 import { Question } from './entity/questions.entity';
-import { Reel } from './entity/reels.entity';
-import * as os from 'os';
 import * as base64 from 'base64-js';
 
 @Injectable()
@@ -34,8 +34,7 @@ export class PetService {
     @InjectRepository(Translation)
     private readonly translationRepository: Repository<Translation>,
     private readonly attachmentService: AttachmentService,
-  ) {
-  }
+  ) {}
 
   async create(
     profileImageFile: Express.Multer.File,
@@ -148,37 +147,42 @@ export class PetService {
     });
   }
 
-async transcribeAudio(audioFile: Express.Multer.File) {
-  try {
-    if (!audioFile) {
-      throw new BadRequestException('No file uploaded');
+  async transcribeAudio(audioFile: Express.Multer.File) {
+    console.log('transcribeAudio');
+    try {
+      if (!audioFile) {
+        throw new BadRequestException('No file uploaded');
+      }
+
+      // Use the buffer directly
+      const audioData = audioFile.buffer;
+      const encodedAudio = base64.fromByteArray(audioData);
+
+      // Hugging Face API endpoint and headers
+      const apiUrl = Constant.HUGGING_FACE_URL;
+      const hfToken = process.env.HUGGING_FACE_TOKEN;
+
+      const response = await axios.post(
+        apiUrl,
+        {
+          inputs: encodedAudio,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${hfToken}`,
+            'Content-Type': 'application/json', // Use application/json for base64 encoded data
+          },
+        },
+      );
+
+      // Extract the transcribed text from the response
+      const transcribedText = response.data.text || '';
+
+      return { transcribed_text: transcribedText };
+    } catch (error) {
+      throw new InternalServerErrorException({ error });
     }
-
-    // Use the buffer directly
-    const audioData = audioFile.buffer;
-    const encodedAudio = base64.fromByteArray(audioData);
-
-    // Hugging Face API endpoint and headers
-    const apiUrl = 'https://router.huggingface.co/hf-inference/models/openai/whisper-large-v3-turbo';
-    const hfToken = process.env.HUGGING_FACE_TOKEN;
-
-    const response = await axios.post(apiUrl, {
-      inputs: encodedAudio,
-    }, {
-      headers: {
-        Authorization: `Bearer ${hfToken}`,
-        'Content-Type': 'application/json', // Use application/json for base64 encoded data
-      },
-    });
-
-    // Extract the transcribed text from the response
-    const transcribedText = response.data.text || '';
-
-    return { transcribed_text: transcribedText };
-  } catch (error) {
-    throw new InternalServerErrorException({error});
   }
-}
 
   async getRefinedText(
     originalText: string,
@@ -249,24 +253,24 @@ async transcribeAudio(audioFile: Express.Multer.File) {
     }
   }
 
-getRandomItems<T>(array: Array<T>, count: number): Array<T & { id: string }> {
+  getRandomItems<T>(array: Array<T>, count: number): Array<T & { id: string }> {
     if (!array || array.length === 0) return [];
 
     // Map to add unique IDs
-    const mappedArray = array.map(value => ({
-        id: crypto.randomUUID(),
-        ...value,
+    const mappedArray = array.map((value) => ({
+      id: crypto.randomUUID(),
+      ...value,
     }));
 
     // Fisher-Yates shuffle
     for (let i = mappedArray.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [mappedArray[i], mappedArray[j]] = [mappedArray[j], mappedArray[i]];
+      const j = Math.floor(Math.random() * (i + 1));
+      [mappedArray[i], mappedArray[j]] = [mappedArray[j], mappedArray[i]];
     }
 
     // Return the specified count of random items
     return mappedArray.slice(0, count);
-}
+  }
 
   private async _callAi(prompt: string, isPetExpert = null) {
     const options = {
@@ -274,18 +278,19 @@ getRandomItems<T>(array: Array<T>, count: number): Array<T & { id: string }> {
       url: Constant.OPEN_AI_URL,
       headers: Constant.OPEN_AI_HEADERS,
       data: {
-    messages: [
-        {
-            "role": "system",
-            "content": "You are 'Vet 2' a pet expert with a PhD in veterinary medicine."
-        },
-        {
-            "role": "user",
-            "content": `${prompt}`
-        }
-    ],
-    stream: false,
-    model: "meta-llama/llama-4-scout-17b-16e-instruct"
+        messages: [
+          {
+            role: 'system',
+            content:
+              "You are 'Vet 2' a pet expert with a PhD in veterinary medicine.",
+          },
+          {
+            role: 'user',
+            content: `${prompt}`,
+          },
+        ],
+        stream: false,
+        model: 'meta-llama/llama-4-scout-17b-16e-instruct',
       },
     };
 
