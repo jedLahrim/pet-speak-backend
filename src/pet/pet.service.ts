@@ -273,29 +273,56 @@ export class PetService {
   }
 
   private async _callAi(prompt: string, isPetExpert = null) {
-    const options = {
-      method: 'POST',
-      url: Constant.OPEN_AI_URL,
-      headers: Constant.OPEN_AI_HEADERS,
-      data: {
-        messages: [
-          {
-            role: 'system',
-            content:
-              "You are 'Vet 2' a pet expert with a PhD in veterinary medicine.",
-          },
-          {
-            role: 'user',
-            content: `${prompt}`,
-          },
-        ],
-        stream: false,
-        model: 'meta-llama/llama-4-scout-17b-16e-instruct',
-      },
-    };
+    const createRequestOptions = (model: string, url: string) => ({
+        method: 'POST',
+        url,
+        headers: Constant.OPEN_AI_HEADERS,
+        data: {
+            messages: [
+                {
+                    role: 'system',
+                    content: "You are 'Vet 2' a pet expert with a PhD in veterinary medicine.",
+                },
+                {
+                    role: 'user',
+                    content: prompt,
+                },
+            ],
+            stream: false,
+            model,
+        },
+    });
 
-    // Replace with your ChatGPT API call logic
-    const response = await axios.request(options);
-    return response.data;
-  }
+    const primaryOptions = createRequestOptions(
+        'meta-llama/llama-4-scout-17b-16e-instruct',
+        Constant.OPEN_AI_URL
+    );
+
+    try {
+        const timeoutPromise = new Promise((_, reject) => {
+            setTimeout(() => reject(new Error('Request timeout')), 6000);
+        });
+        const response = await Promise.race([
+            axios.request(primaryOptions),
+            timeoutPromise
+        ]);
+        return response.data;
+    } catch (firstError) {
+        if (firstError.message === 'Request timeout') {
+            try {
+                const fallbackOptions = createRequestOptions(
+                    'meta-llama/Llama-3.3-70B-Instruct',
+                    Constant.SECOND_OPEN_AI_URL
+                );
+                const secondResponse = await axios.request(fallbackOptions);
+                return secondResponse.data;
+            } catch (secondError) {
+                console.error('Fallback request failed:', secondError);
+                throw secondError;
+            }
+        }
+        console.error('Initial request failed:', firstError);
+        throw firstError;
+    }
+}
 }
