@@ -305,7 +305,7 @@ export class PetService {
         const response = await Promise.race([
             axios.request(primaryOptions),
             timeoutPromise
-        ]);
+        ]) as {data: any};
         return response.data;
     } catch (firstError) {
         if (firstError.message === 'Request timeout') {
@@ -314,7 +314,7 @@ export class PetService {
                     'meta-llama/Llama-3.3-70B-Instruct',
                     Constant.SECOND_OPEN_AI_URL
                 );
-                const secondResponse = await axios.request(fallbackOptions);
+                const secondResponse = await axios.request(fallbackOptions) as {data: any};
                 return secondResponse.data;
             } catch (secondError) {
                 console.error('Fallback request failed:', secondError);
