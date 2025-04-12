@@ -238,8 +238,8 @@ export class PetService {
   }
 
   async chat(dto: ChatDto): Promise<{ message: string }> {
-    const { text } = dto;
-    const data = await this._callAi(text, true);
+    const { text, isPetExpert } = dto;
+    const data = await this._callAi(text, isPetExpert);
     return { message: data?.choices[0].message?.content };
   }
 
@@ -272,7 +272,7 @@ export class PetService {
     return mappedArray.slice(0, count);
   }
 
-  private async _callAi(prompt: string, isPetExpert = true) {
+  private async _callAi(prompt: string, isPetExpert: boolean = true) {
     const createRequestOptions = (model: string, url: string) => ({
         method: 'POST',
         url,
