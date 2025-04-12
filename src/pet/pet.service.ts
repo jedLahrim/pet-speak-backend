@@ -238,8 +238,8 @@ export class PetService {
   }
 
   async chat(dto: ChatDto): Promise<{ message: string }> {
-    const { text, isPetExpert } = dto;
-    const data = await this._callAi(text, isPetExpert);
+    const { text } = dto;
+    const data = await this._callAi(text, true);
     return { message: data?.choices[0].message?.content };
   }
 
@@ -272,7 +272,7 @@ export class PetService {
     return mappedArray.slice(0, count);
   }
 
-  private async _callAi(prompt: string, isPetExpert: boolean = true) {
+  private async _callAi(prompt: string, isPetExpert = null) {
     const createRequestOptions = (model: string, url: string) => ({
         method: 'POST',
         url,
@@ -294,8 +294,8 @@ export class PetService {
     });
 
     const primaryOptions = createRequestOptions(
-        isPetExpert ? 'meta-llama/llama-4-scout-17b-16e-instruct' : 'deepseek/deepseek-v3-turbo',
-        isPetExpert ? Constant.OPEN_AI_URL : 'https://router.huggingface.co/novita/v3/openai/chat/completions'
+        'meta-llama/llama-4-scout-17b-16e-instruct',
+        Constant.OPEN_AI_URL
     );
 
     try {
