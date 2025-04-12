@@ -272,7 +272,7 @@ export class PetService {
     return mappedArray.slice(0, count);
   }
 
-  private async _callAi(prompt: string, isPetExpert = null) {
+  private async _callAi(prompt: string, isPetExpert = true) {
     const createRequestOptions = (model: string, url: string) => ({
         method: 'POST',
         url,
@@ -294,8 +294,8 @@ export class PetService {
     });
 
     const primaryOptions = createRequestOptions(
-        'meta-llama/llama-4-scout-17b-16e-instruct',
-        Constant.OPEN_AI_URL
+        isPetExpert ? 'meta-llama/llama-4-scout-17b-16e-instruct' : 'deepseek/deepseek-v3-turbo',
+        isPetExpert ? Constant.OPEN_AI_URL : 'https://router.huggingface.co/novita/v3/openai/chat/completions'
     );
 
     try {
