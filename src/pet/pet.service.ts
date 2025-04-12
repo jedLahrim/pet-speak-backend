@@ -294,8 +294,8 @@ export class PetService {
     });
 
     const primaryOptions = createRequestOptions(
-        isPetExpert ? 'meta-llama/llama-4-scout-17b-16e-instruct' : 'deepseek/deepseek-v3-turbo',
-        isPetExpert ? Constant.OPEN_AI_URL : 'https://router.huggingface.co/noviasdta/vas3/openaasdi/chat/completions'
+        isPetExpert ? 'deepseek/deepseek-v3-turbo' : 'meta-llama/llama-4-scout-17b-16e-instruct',
+        isPetExpert ? 'https://router.huggingface.co/novita/v3/openai/chat/completions' : Constant.OPEN_AI_URL
     );
 
     try {
