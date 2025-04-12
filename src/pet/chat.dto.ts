@@ -4,5 +4,5 @@ export class ChatDto {
   @IsString()
   text: string;
 
-  isPetExpert?: string;
+  isPetExpert?: boolean;
 }
