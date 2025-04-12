@@ -189,7 +189,7 @@ export class PetService {
     languageCode: string,
   ): Promise<string> {
     try {
-      const prompt = `In the same language code ${languageCode}. 
+      const prompt = `In this same language code: ${languageCode}. 
               Explain this: ${originalText}`;
       const data = await this._callAi(prompt);
       return data?.choices[0].message?.content;
