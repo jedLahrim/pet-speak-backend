@@ -189,8 +189,8 @@ export class PetService {
     languageCode: string,
   ): Promise<string> {
     try {
-      const prompt = `In this same language code: ${languageCode}. 
-              Explain this: ${originalText}`;
+      const prompt = `Explain the following text in detail, 
+      maintaining the same Language Code: '${languageCode}': \n${originalText}`;
       const data = await this._callAi(prompt);
       return data?.choices[0].message?.content;
     } catch (e) {
