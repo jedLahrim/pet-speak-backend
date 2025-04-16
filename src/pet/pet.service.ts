@@ -26,6 +26,8 @@ import dogQuiz from './assets/json/dog-quiz.json';
 import { Question } from './entity/questions.entity';
 import * as base64 from 'base64-js';
 import FormData from 'form-data';
+import { v4 as uuidv4 } from 'uuid';
+
 @Injectable()
 export class PetService {
   constructor(
@@ -152,7 +154,10 @@ export class PetService {
        if (!audioFile) {
       throw new BadRequestException('No file uploaded');
     }
+
       const formData = new FormData();
+      const originalFileName = audioFile?.originalname;
+      const fileName = `${uuidv4()}_${originalFileName}`;
       // Use the buffer directly
       const buffer = audioFile.buffer;
       formData.append('file', buffer, fileName);
