@@ -25,7 +25,7 @@ import catQuiz from './assets/json/cat-quiz.json';
 import dogQuiz from './assets/json/dog-quiz.json';
 import { Question } from './entity/questions.entity';
 import * as base64 from 'base64-js';
-
+import FormData from 'form-data';
 @Injectable()
 export class PetService {
   constructor(
