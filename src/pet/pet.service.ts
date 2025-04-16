@@ -311,8 +311,8 @@ export class PetService {
         if (firstError.message === 'Request timeout') {
             try {
                 const fallbackOptions = createRequestOptions(
-                    'meta-llama/Llama-3.3-70B-Instruct',
-                    Constant.SECOND_OPEN_AI_URL
+                    'meta-llama/llama-3.3-70b-instruct',
+                    Constant.OPEN_AI_URL
                 );
                 const secondResponse = await axios.request(fallbackOptions) as {data: any};
                 return secondResponse.data;
