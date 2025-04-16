@@ -148,37 +148,27 @@ export class PetService {
   }
 
   async transcribeAudio(audioFile: Express.Multer.File) {
-    console.log('transcribeAudio');
     try {
-      if (!audioFile) {
-        throw new BadRequestException('No file uploaded');
-      }
-
+       if (!audioFile) {
+      throw new BadRequestException('No file uploaded');
+    }
+      const formData = new FormData();
       // Use the buffer directly
-      const audioData = audioFile.buffer;
-      const encodedAudio = base64.fromByteArray(audioData);
-
-      // Hugging Face API endpoint and headers
-      const apiUrl = Constant.HUGGING_FACE_URL;
-      const hfToken = process.env.HUGGING_FACE_TOKEN;
+      const buffer = audioFile.buffer;
+      formData.append('file', buffer, fileName);
+      formData.append('model', 'whisper-1');
 
       const response = await axios.post(
-        apiUrl,
-        {
-          inputs: encodedAudio,
-        },
+        `${process.env.OPENAI_BASE_URL}/audio/transcriptions`,
+        formData,
         {
           headers: {
-            Authorization: `Bearer ${hfToken}`,
-            'Content-Type': 'application/json', // Use application/json for base64 encoded data
+            Authorization: `Bearer ${process.env.OPENAI_TRANSCRIPTION_API_KEY}`,
+            'Content-Type': 'multipart/form-data',
           },
         },
       );
-
-      // Extract the transcribed text from the response
-      const transcribedText = response.data.text || '';
-
-      return { transcribed_text: transcribedText };
+    return { transcribed_text: response.data.text };
     } catch (error) {
       throw new InternalServerErrorException({ error });
     }
