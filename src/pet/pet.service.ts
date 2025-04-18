@@ -24,9 +24,9 @@ import { PetType } from './enums/pet-type.enum';
 import catQuiz from './assets/json/cat-quiz.json';
 import dogQuiz from './assets/json/dog-quiz.json';
 import { Question } from './entity/questions.entity';
-import * as base64 from 'base64-js';
 import FormData from 'form-data';
 import { v4 as uuidv4 } from 'uuid';
+import { AnalyseImageDto } from './analyse-image.dto';
 
 @Injectable()
 export class PetService {
@@ -150,11 +150,10 @@ export class PetService {
   }
 
   async transcribeAudio(audioFile: Express.Multer.File) {
-    try {
-       if (!audioFile) {
+    if (!audioFile) {
       throw new BadRequestException('No file uploaded');
     }
-
+    try {
       const formData = new FormData();
       const originalFileName = audioFile?.originalname;
       const fileName = `${uuidv4()}_${originalFileName}`;
@@ -173,7 +172,7 @@ export class PetService {
           },
         },
       );
-    return { transcribed_text: response.data.text };
+      return { transcribed_text: response.data.text };
     } catch (error) {
       throw new InternalServerErrorException({ error });
     }
@@ -267,57 +266,101 @@ export class PetService {
     return mappedArray.slice(0, count);
   }
 
-  private async _callAi(prompt: string, isPetExpert?: boolean) {
-    const createRequestOptions = (model: string, url: string) => ({
-        method: 'POST',
-        url,
-        headers: Constant.OPEN_AI_HEADERS,
-        data: {
-            messages: [
-                {
-                    role: 'system',
-                    content: "You are 'Vet 2' a pet expert with a PhD in veterinary medicine.",
-                },
-                {
-                    role: 'user',
-                    content: prompt,
-                },
-            ],
-            stream: false,
-            model,
+  _createRequestOptions = (content: any, model: string, url: string) => ({
+    method: 'POST',
+    url,
+    headers: Constant.OPEN_AI_HEADERS,
+    data: {
+      messages: [
+        {
+          role: 'system',
+          content:
+            "You are 'Vet 2' a pet expert with a PhD in veterinary medicine.",
         },
-    });
+        {
+          role: 'user',
+          content: content,
+        },
+      ],
+      stream: false,
+      model,
+    },
+  });
 
-    const primaryOptions = createRequestOptions(
-        isPetExpert ? 'deepseek/deepseek-v3-turbo' : 'meta-llama/llama-4-scout-17b-16e-instruct',
-        isPetExpert ? 'https://router.huggingface.co/novita/v3/openai/chat/completions' : Constant.OPEN_AI_URL
+  async analyseImage(imageFile: Express.Multer.File, dto: AnalyseImageDto) {
+    const { text } = dto;
+    if (!imageFile) {
+      throw new BadRequestException('No file uploaded');
+    }
+    try {
+      const imageUrl = this._getImageUrl(imageFile);
+      const requestOptions = this._createRequestOptions(
+        [
+          {
+            type: 'text',
+            text: text ?? 'Please analyse this image',
+          },
+          {
+            type: 'image_url',
+            image_url: {
+              url: imageUrl,
+            },
+          },
+        ],
+        Constant.OPEN_AI_MODEL_NAME,
+        Constant.OPEN_AI_URL,
+      );
+      const response = await axios.request(requestOptions);
+      const content: string = response?.data?.choices[0]?.message?.content;
+      return { message: content };
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  private async _callAi(prompt: string, isPetExpert?: boolean) {
+    const primaryOptions = this._createRequestOptions(
+      prompt,
+      isPetExpert ? 'deepseek/deepseek-v3-turbo' : Constant.OPEN_AI_MODEL_NAME,
+      isPetExpert
+        ? 'https://router.huggingface.co/novita/v3/openai/chat/completions'
+        : Constant.OPEN_AI_URL,
     );
 
     try {
-        const timeoutPromise = new Promise((_, reject) => {
-            setTimeout(() => reject(new Error('Request timeout')), 6000);
-        });
-        const response = await Promise.race([
-            axios.request(primaryOptions),
-            timeoutPromise
-        ]) as {data: any};
-        return response.data;
+      const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('Request timeout')), 6000);
+      });
+      const response = (await Promise.race([
+        axios.request(primaryOptions),
+        timeoutPromise,
+      ])) as { data: any };
+      return response.data;
     } catch (firstError) {
-        if (firstError.message === 'Request timeout') {
-            try {
-                const fallbackOptions = createRequestOptions(
-                    'meta-llama/llama-3.3-70b-instruct',
-                    Constant.OPEN_AI_URL
-                );
-                const secondResponse = await axios.request(fallbackOptions) as {data: any};
-                return secondResponse.data;
-            } catch (secondError) {
-                console.error('Fallback request failed:', secondError);
-                throw secondError;
-            }
+      if (firstError.message === 'Request timeout') {
+        try {
+          const fallbackOptions = this._createRequestOptions(
+            prompt,
+            Constant.OPEN_AI_MODEL_NAME,
+            Constant.OPEN_AI_URL,
+          );
+          const secondResponse = (await axios.request(fallbackOptions)) as {
+            data: any;
+          };
+          return secondResponse.data;
+        } catch (secondError) {
+          console.error('Fallback request failed:', secondError);
+          throw secondError;
         }
-        console.error('Initial request failed:', firstError);
-        throw firstError;
+      }
+      console.error('Initial request failed:', firstError);
+      throw firstError;
     }
-}
+  }
+
+  private _getImageUrl(imageFile: Express.Multer.File) {
+    const base64Image = imageFile?.buffer.toString('base64');
+    const extension = path.extname(imageFile.originalname).slice(1);
+    return `data:image/${extension};base64,${base64Image}`;
+  }
 }

@@ -25,11 +25,11 @@ import { UpdatePetDto } from './update-pet.dto';
 import { FilterPetDto } from './filter-pet.dto';
 import { ChatDto } from './chat.dto';
 import { PetType } from './enums/pet-type.enum';
+import { AnalyseImageDto } from './analyse-image.dto';
 
 @Controller('pets')
 export class PetController {
-  constructor(private readonly petService: PetService) {
-  }
+  constructor(private readonly petService: PetService) {}
 
   @Post()
   @UseGuards(JwtAuthGuard)
@@ -128,10 +128,20 @@ export class PetController {
     return this.petService.chat(dto);
   }
 
+  @Post('generate/analyse-image')
+  @UseGuards(JwtAuthGuard)
+  @UseInterceptors(FileInterceptor('image_file'))
+  analyseImage(
+    @UploadedFile() imageFile: Express.Multer.File,
+    @Body() dto: AnalyseImageDto,
+  ) {
+    return this.petService.analyseImage(imageFile, dto);
+  }
+
   @Post('generate/transcribe')
   @UseInterceptors(FileInterceptor('audio_file'))
   async transcribeAudio(@UploadedFile() audioFile: Express.Multer.File) {
-       return this.petService.transcribeAudio(audioFile);
+    return this.petService.transcribeAudio(audioFile);
   }
 
   @Post('generate/quiz')

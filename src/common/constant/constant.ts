@@ -1,6 +1,7 @@
 export class Constant {
   static OPEN_AI_URL =
     'https://router.huggingface.co/novita/v3/openai/chat/completions';
+  static OPEN_AI_MODEL_NAME = 'meta-llama/llama-4-scout-17b-16e-instruct';
   static SECOND_OPEN_AI_URL =
     'https://router.huggingface.co/novita/v3/openai/chat/completions';
   static OPEN_AI_HEADERS = {
