@@ -275,7 +275,7 @@ export class PetService {
         {
           role: 'system',
           content:
-            "You are 'Vet 2' a pet expert with a PhD in veterinary medicine.",
+            "You are 'Vet 2' a pet expert with a PhD in veterinary medicine. powered by Mobinuity labs",
         },
         {
           role: 'user',
