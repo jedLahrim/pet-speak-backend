@@ -321,7 +321,7 @@ export class PetService {
   private async _callAi(prompt: string, isPetExpert?: boolean) {
     const primaryOptions = this._createRequestOptions(
       prompt,
-      isPetExpert ? 'deepseek/deepseek-v3-turbo' : Constant.OPEN_AI_MODEL_NAME,
+      isPetExpert ? 'deepseek/deepseek-v3-turbo' : 'Constant.OPEN_AI_MODEL_NAME',
       isPetExpert
         ? 'https://router.huggingface.co/novita/v3/openai/chat/completions'
         : Constant.OPEN_AI_URL,
