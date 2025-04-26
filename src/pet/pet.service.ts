@@ -329,7 +329,7 @@ export class PetService {
 
     try {
       const timeoutPromise = new Promise((_, reject) => {
-        setTimeout(() => reject(new Error('Request timeout')), 6000);
+        setTimeout(() => reject(new Error('Request timeout')), 5000);
       });
       const response = (await Promise.race([
         axios.request(primaryOptions),
