@@ -341,8 +341,8 @@ export class PetService {
         try {
           const fallbackOptions = this._createRequestOptions(
             prompt,
-            Constant.OPEN_AI_MODEL_NAME,
-            Constant.OPEN_AI_URL,
+            'deepseek/deepseek-v3-turbo',
+            Constant.OPEN_AI_SECOND_URL,
           );
           const secondResponse = (await axios.request(fallbackOptions)) as {
             data: any;
