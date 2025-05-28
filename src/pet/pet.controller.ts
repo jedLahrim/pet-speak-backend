@@ -123,7 +123,6 @@ export class PetController {
   }
 
   @Post('generate/chat')
-  @UseGuards(JwtAuthGuard)
   chat(@Body() dto: ChatDto) {
     return this.petService.chat(dto);
   }
