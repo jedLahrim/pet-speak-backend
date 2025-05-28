@@ -231,10 +231,10 @@ export class PetService {
     return translations;
   }
 
-  async chat(dto: ChatDto): Promise<{ message: string }> {
+  async chat(dto: ChatDto): Promise<{ answer: string }> {
     const { prompt, isPetExpert } = dto;
     const data = await this._callAi(prompt, isPetExpert);
-    return { message: data?.choices[0].message?.content };
+    return { answer: data?.choices[0].message?.content };
   }
 
   getQuiz(dto: { petType: PetType }) {
