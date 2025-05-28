@@ -232,8 +232,8 @@ export class PetService {
   }
 
   async chat(dto: ChatDto): Promise<{ message: string }> {
-    const { text, isPetExpert } = dto;
-    const data = await this._callAi(text, isPetExpert);
+    const { prompt, isPetExpert } = dto;
+    const data = await this._callAi(prompt, isPetExpert);
     return { message: data?.choices[0].message?.content };
   }
 
