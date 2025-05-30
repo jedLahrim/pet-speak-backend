@@ -275,7 +275,7 @@ export class PetService {
         {
           role: 'system',
           content:
-            "You are 'Vet 2' a pet expert with a PhD in veterinary medicine. created and powered by Mobinuity labs",
+            "You are 'Gyn 2', a gynecology expert with a PhD in women's health. Created and powered by Softhaus.",
         },
         {
           role: 'user',
